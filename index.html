@@ -3,50 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AutoPaint SD — Mobile Auto Paint Repair</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>AutoPaint SD — Mobile Auto Paint Repair | San Diego</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- MARQUEE TOPBAR -->
+  <div class="topbar" id="topbar">
+    <div class="topbar__track">
+      <span>Same-Day Service Available &nbsp;&#9830;&nbsp; We Come To You &nbsp;&#9830;&nbsp; Free Photo Quotes in Minutes &nbsp;&#9830;&nbsp; Serving All San Diego County &nbsp;&#9830;&nbsp; Same-Day Service Available &nbsp;&#9830;&nbsp; We Come To You &nbsp;&#9830;&nbsp; Free Photo Quotes in Minutes &nbsp;&#9830;&nbsp; Serving All San Diego County &nbsp;&#9830;</span>
+    </div>
+    <button class="topbar__close" id="topbarClose" aria-label="Close">&#10005;</button>
+  </div>
 
   <!-- NAV -->
   <nav class="nav" id="navbar">
     <div class="nav__inner">
-      <a href="#home" class="nav__logo">
-        <span class="logo-icon">&#9632;</span> AutoPaint<span class="accent">SD</span>
-      </a>
+      <a href="#home" class="nav__logo">AutoPaint<span class="accent">SD</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#quote" class="btn btn--nav">Get a Free Quote</a></li>
+      </ul>
+      <a href="tel:+18589880325" class="nav__phone">&#128222; (858) 988-0325</a>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact" class="btn btn--nav">Get a Free Quote</a></li>
-      </ul>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <span class="hero__badge">We Come To You</span>
-      <h1 class="hero__title">Mobile Auto Paint<br/><em>Repair Done Right</em></h1>
-      <p class="hero__sub">Scratches, chips, and dents fixed at your home or office — same-day service, dealership-quality results.</p>
+    <div class="hero__left">
+      <div class="hero__badge">&#9679; Available Today in San Diego</div>
+      <h1 class="hero__title">
+        <span class="drop">Mobile</span>
+        <span class="drop">Auto Paint</span>
+        <span class="drop accent">Repair.</span>
+      </h1>
+      <p class="hero__sub">Scratches, chips, scuffs, and faded paint — fixed at your home or office. No shop drop-off. No waiting.</p>
       <div class="hero__ctas">
-        <a href="#contact" class="btn btn--primary">Get a Free Quote</a>
-        <a href="#how-it-works" class="btn btn--outline">See How It Works</a>
+        <a href="#quote" class="btn btn--primary">Get a Free Quote</a>
+        <a href="tel:+18589880325" class="btn btn--outline">&#128222; Call Now</a>
       </div>
       <div class="hero__stats">
-        <div class="stat"><strong>500+</strong><span>Cars Repaired</span></div>
-        <div class="stat"><strong>5★</strong><span>Avg. Rating</span></div>
-        <div class="stat"><strong>Same Day</strong><span>Service Available</span></div>
+        <div class="stat"><strong>500+</strong><span>Repairs Done</span></div>
+        <div class="stat"><strong>4.9 &#9733;</strong><span>47+ Reviews</span></div>
+        <div class="stat"><strong>5 Yrs</strong><span>Experience</span></div>
+        <div class="stat"><strong>Same Day</strong><span>Available</span></div>
+      </div>
+    </div>
+    <div class="hero__right">
+      <div class="hero__map-placeholder">
+        <div class="map-pin">&#128205;</div>
+        <p>San Diego County</p>
+        <p class="map-sub">We come to your location</p>
+        <div class="map-zones">
+          <span>La Jolla</span><span>Pacific Beach</span><span>Chula Vista</span>
+          <span>Mission Valley</span><span>El Cajon</span><span>Coronado</span>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-strip__inner">
+      <div class="trust-item"><span class="trust-icon">&#9989;</span> No Shop Drop-Off</div>
+      <div class="trust-item"><span class="trust-icon">&#9989;</span> Factory Color Match</div>
+      <div class="trust-item"><span class="trust-icon">&#9989;</span> Price Confirmed Before Work</div>
+      <div class="trust-item"><span class="trust-icon">&#9989;</span> 1-Year Guarantee</div>
+      <div class="trust-item"><span class="trust-icon">&#9989;</span> Licensed &amp; Insured</div>
+    </div>
+  </div>
 
   <!-- SERVICES -->
   <section class="section" id="services">
@@ -54,224 +87,400 @@
       <div class="section__header">
         <span class="label">What We Fix</span>
         <h2>Our Services</h2>
-        <p>From minor chips to full panel touch-ups — we handle it all at your location.</p>
+        <p>Every repair done on-site at your location — no tow trucks, no rentals, no waiting rooms.</p>
       </div>
       <div class="services__grid">
         <div class="service-card">
           <div class="service-card__icon">&#127775;</div>
           <h3>Paint Chip Repair</h3>
-          <p>Rock chips and road debris leave ugly marks. We blend them seamlessly with your factory color.</p>
-          <span class="service-card__price">Starting at $75</span>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">&#128663;</div>
-          <h3>Scratch Removal</h3>
-          <p>Key scratches, parking lot scuffs — we sand, prime, and repaint so you can't even tell it happened.</p>
-          <span class="service-card__price">Starting at $95</span>
+          <p>Rock chips and road debris leave ugly bare-metal spots. We fill, prime, and color-match so they vanish.</p>
+          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
         </div>
         <div class="service-card">
           <div class="service-card__icon">&#128295;</div>
-          <h3>Bumper Repair</h3>
-          <p>Scuffed or cracked bumpers restored to factory condition without a trip to the body shop.</p>
-          <span class="service-card__price">Starting at $150</span>
+          <h3>Scratch Removal</h3>
+          <p>Key scratches, parking scuffs — we sand, prime, and repaint the panel. Invisible results guaranteed.</p>
+          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
         </div>
         <div class="service-card">
           <div class="service-card__icon">&#10024;</div>
-          <h3>Touch-Up & Blending</h3>
-          <p>Full panel color-matching and blending so repairs are invisible under any lighting.</p>
-          <span class="service-card__price">Starting at $120</span>
+          <h3>Touch-Up &amp; Blending</h3>
+          <p>Full panel color-matching and edge blending so the repair disappears under any lighting condition.</p>
+          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
         </div>
         <div class="service-card">
-          <div class="service-card__icon">&#128274;</div>
+          <div class="service-card__icon">&#128663;</div>
           <h3>Door Ding Repair</h3>
-          <p>Parking-lot door dings removed without the expense of a full panel repaint.</p>
-          <span class="service-card__price">Starting at $85</span>
+          <p>Parking-lot door dings removed and painted without the cost of a full panel respray.</p>
+          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">&#127775;</div>
+          <h3>Paint Correction</h3>
+          <p>Oxidized, faded, or swirl-marked paint restored to a deep, glossy finish on-site.</p>
+          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
         </div>
         <div class="service-card">
           <div class="service-card__icon">&#127973;</div>
-          <h3>Fleet & Dealership</h3>
-          <p>High-volume reconditioning for dealerships and fleet operators — on your lot, on your schedule.</p>
-          <span class="service-card__price">Call for pricing</span>
+          <h3>Fleet &amp; Dealership</h3>
+          <p>High-volume reconditioning on your lot, on your schedule. Ask about fleet rates.</p>
+          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- INLINE CTA STRIP -->
+  <div class="cta-strip">
+    <div class="container cta-strip__inner">
+      <p>Ready to get your car looking new again?</p>
+      <a href="#quote" class="btn btn--primary">Get My Free Quote</a>
+    </div>
+  </div>
+
   <!-- HOW IT WORKS -->
-  <section class="section section--alt" id="how-it-works">
+  <section class="section section--alt" id="how">
     <div class="container">
       <div class="section__header">
         <span class="label">Simple Process</span>
         <h2>How It Works</h2>
-        <p>Three steps and we're at your door.</p>
+        <p>Four steps from photo to perfect finish.</p>
       </div>
       <div class="steps">
         <div class="step">
           <div class="step__num">1</div>
-          <h3>Request a Quote</h3>
-          <p>Send us photos of the damage via the form below. We'll respond with a firm price — no surprises.</p>
+          <h3>Send Photos</h3>
+          <p>Text or upload photos of the damage. We assess and send a firm price — no surprises.</p>
         </div>
-        <div class="step__arrow">&#8594;</div>
         <div class="step">
           <div class="step__num">2</div>
-          <h3>Book Your Slot</h3>
-          <p>Pick a time that works for you — morning, afternoon, or weekend. We come to your location.</p>
+          <h3>Confirm Price</h3>
+          <p>You approve the quote before we schedule anything. Clear, upfront pricing every time.</p>
         </div>
-        <div class="step__arrow">&#8594;</div>
         <div class="step">
           <div class="step__num">3</div>
-          <h3>We Fix It</h3>
-          <p>Our tech arrives fully equipped. Most repairs are done in 1–3 hours. You walk away with a perfect finish.</p>
+          <h3>We Come To You</h3>
+          <p>Pick a time — morning, afternoon, or weekend. Our tech arrives at your home or office.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <h3>Drive Away Happy</h3>
+          <p>Most repairs take 1–3 hours. UV-cured clear coat means you can wash it in 24 hours.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY US -->
-  <section class="section" id="about">
-    <div class="container why-us">
-      <div class="why-us__text">
-        <span class="label">Why AutoPaint SD</span>
-        <h2>Dealership Quality,<br/>Driveway Convenience</h2>
-        <p>We built AutoPaint SD because body shops are slow, expensive, and inconvenient. Our mobile technicians carry professional spray equipment, OEM-matched paint, and UV curing lamps — the same tools used by dealership reconditioning departments.</p>
-        <ul class="checkmarks">
-          <li>Factory color-matched paint using VIN lookup</li>
-          <li>Professional spray equipment — no brush marks</li>
-          <li>UV-cure clear coat — ready to wash in 24 hrs</li>
-          <li>Fully licensed, bonded, and insured</li>
-          <li>1-year workmanship guarantee</li>
-          <li>Serving the entire San Diego County area</li>
-        </ul>
-        <a href="#contact" class="btn btn--primary">Book a Repair</a>
-      </div>
-      <div class="why-us__image">
-        <div class="image-placeholder">
-          <div class="image-placeholder__icon">&#128663;</div>
-          <p>Professional Mobile<br/>Paint Technician</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="section section--alt" id="gallery">
+  <!-- GALLERY / RESULTS -->
+  <section class="section" id="gallery">
     <div class="container">
       <div class="section__header">
         <span class="label">Before &amp; After</span>
-        <h2>Our Work</h2>
-        <p>Real repairs, real results — all done on-site.</p>
+        <h2>Real Results</h2>
+        <p>Every job done on-site. Real cars, real customers, real San Diego.</p>
       </div>
       <div class="gallery__grid">
-        <div class="gallery-card">
-          <div class="gallery-card__before">Before</div>
-          <div class="gallery-card__after">After</div>
-          <div class="gallery-card__label">Door Scratch — Honda Civic</div>
+        <div class="job-card">
+          <div class="job-card__images">
+            <div class="job-card__before">Before</div>
+            <div class="job-card__after">After</div>
+          </div>
+          <div class="job-card__info">
+            <strong>Door Scratch</strong>
+            <span>Honda Civic &mdash; Pacific Beach</span>
+          </div>
         </div>
-        <div class="gallery-card">
-          <div class="gallery-card__before">Before</div>
-          <div class="gallery-card__after">After</div>
-          <div class="gallery-card__label">Bumper Scuff — Toyota Camry</div>
+        <div class="job-card">
+          <div class="job-card__images">
+            <div class="job-card__before">Before</div>
+            <div class="job-card__after">After</div>
+          </div>
+          <div class="job-card__info">
+            <strong>Paint Chips</strong>
+            <span>Ford F-150 &mdash; Mission Valley</span>
+          </div>
         </div>
-        <div class="gallery-card">
-          <div class="gallery-card__before">Before</div>
-          <div class="gallery-card__after">After</div>
-          <div class="gallery-card__label">Paint Chip — Ford F-150</div>
-        </div>
-        <div class="gallery-card">
-          <div class="gallery-card__before">Before</div>
-          <div class="gallery-card__after">After</div>
-          <div class="gallery-card__label">Key Scratch — BMW 3 Series</div>
+        <div class="job-card">
+          <div class="job-card__images">
+            <div class="job-card__before">Before</div>
+            <div class="job-card__after">After</div>
+          </div>
+          <div class="job-card__info">
+            <strong>Key Scratch</strong>
+            <span>BMW 3 Series &mdash; La Jolla</span>
+          </div>
         </div>
       </div>
-      <p class="gallery__note">Replace placeholders with real before/after photos for maximum impact.</p>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="section" id="testimonials">
+  <!-- PRICING -->
+  <section class="section section--alt" id="pricing">
     <div class="container">
       <div class="section__header">
-        <span class="label">Reviews</span>
-        <h2>What Customers Say</h2>
+        <span class="label">Transparent Pricing</span>
+        <h2>Simple, Upfront Rates</h2>
+        <p>Price confirmed before we start. No hidden fees, no shop overhead.</p>
       </div>
-      <div class="testimonials__grid">
-        <div class="testimonial">
-          <div class="testimonial__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"They came to my office parking lot and fixed a huge door ding in under 2 hours. Couldn't tell where it was. Incredible."</p>
-          <cite>— Marcus T., San Diego</cite>
+      <div class="pricing__grid">
+        <div class="pricing-card">
+          <div class="pricing-card__tier">Light Repair</div>
+          <div class="pricing-card__price"><span>$</span>149<span class="suffix">+</span></div>
+          <p class="pricing-card__desc">Small chips, minor scuffs, spot touch-up</p>
+          <ul class="pricing-card__features">
+            <li>&#10003; Paint chip fill &amp; seal</li>
+            <li>&#10003; Spot color match</li>
+            <li>&#10003; UV clear coat</li>
+            <li>&#10003; Ready in 1–2 hrs</li>
+          </ul>
+          <a href="#quote" class="btn btn--outline-dark">Get a Quote</a>
         </div>
-        <div class="testimonial">
-          <div class="testimonial__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Half the price of the dealership body shop and done the same day. The paint match was perfect. I'll never go back to a shop."</p>
-          <cite>— Jennifer R., Chula Vista</cite>
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-card__badge">Most Popular</div>
+          <div class="pricing-card__tier">Panel Repair</div>
+          <div class="pricing-card__price"><span>$</span>299<span class="suffix">+</span></div>
+          <p class="pricing-card__desc">Scratches, door dings, scuffs — full panel</p>
+          <ul class="pricing-card__features">
+            <li>&#10003; Sand &amp; prime</li>
+            <li>&#10003; Factory color match via VIN</li>
+            <li>&#10003; Full panel respray</li>
+            <li>&#10003; UV-cured clear coat</li>
+            <li>&#10003; 1-year guarantee</li>
+          </ul>
+          <a href="#quote" class="btn btn--primary">Get a Quote</a>
         </div>
-        <div class="testimonial">
-          <div class="testimonial__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Used them for our dealership's lot. Fast, professional, and the quality is consistently great. Our go-to recon vendor."</p>
-          <cite>— Dave S., Fleet Manager</cite>
+        <div class="pricing-card">
+          <div class="pricing-card__tier">Full Respray</div>
+          <div class="pricing-card__price"><span>$</span>449<span class="suffix">+</span></div>
+          <p class="pricing-card__desc">Faded paint, large damage, multi-panel work</p>
+          <ul class="pricing-card__features">
+            <li>&#10003; Full surface prep</li>
+            <li>&#10003; Multi-panel blending</li>
+            <li>&#10003; Premium clear coat</li>
+            <li>&#10003; Paint correction included</li>
+            <li>&#10003; 1-year guarantee</li>
+          </ul>
+          <a href="#quote" class="btn btn--outline-dark">Get a Quote</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT / QUOTE FORM -->
-  <section class="section section--dark" id="contact">
+  <!-- COMPARISON TABLE -->
+  <section class="section" id="compare">
     <div class="container">
-      <div class="section__header section__header--light">
-        <span class="label label--light">Free Estimate</span>
-        <h2>Get Your Free Quote</h2>
-        <p>Fill out the form and we'll get back to you within 2 hours during business hours.</p>
+      <div class="section__header">
+        <span class="label">Why Mobile</span>
+        <h2>Us vs. The Body Shop</h2>
       </div>
-      <form class="quote-form" id="quoteForm" novalidate>
-        <div class="form__row">
-          <div class="form__group">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name" placeholder="Jane Smith" required />
-          </div>
-          <div class="form__group">
-            <label for="phone">Phone Number *</label>
-            <input type="tel" id="phone" name="phone" placeholder="(619) 555-0100" required />
-          </div>
+      <div class="compare__table">
+        <div class="compare__header">
+          <div></div>
+          <div class="compare__us">AutoPaint SD</div>
+          <div class="compare__them">Body Shop</div>
         </div>
-        <div class="form__row">
-          <div class="form__group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+        <div class="compare__row">
+          <div>We come to you</div>
+          <div class="yes">&#10003;</div>
+          <div class="no">&#10007;</div>
+        </div>
+        <div class="compare__row">
+          <div>Same-day availability</div>
+          <div class="yes">&#10003;</div>
+          <div class="no">&#10007;</div>
+        </div>
+        <div class="compare__row">
+          <div>Price confirmed upfront</div>
+          <div class="yes">&#10003;</div>
+          <div class="no">&#10007;</div>
+        </div>
+        <div class="compare__row">
+          <div>No rental car needed</div>
+          <div class="yes">&#10003;</div>
+          <div class="no">&#10007;</div>
+        </div>
+        <div class="compare__row">
+          <div>Typical turnaround</div>
+          <div class="yes">1–3 hrs</div>
+          <div class="no">3–7 days</div>
+        </div>
+        <div class="compare__row">
+          <div>Average cost savings</div>
+          <div class="yes">Up to 60% less</div>
+          <div class="no">Full shop rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="section section--alt" id="area">
+    <div class="container">
+      <div class="section__header">
+        <span class="label">Coverage</span>
+        <h2>We Serve All of San Diego County</h2>
+        <p>From the coast to the inland valleys — if you're in San Diego County, we come to you.</p>
+      </div>
+      <div class="area__zones">
+        <span class="zone">La Jolla</span>
+        <span class="zone">Pacific Beach</span>
+        <span class="zone">Ocean Beach</span>
+        <span class="zone">Mission Valley</span>
+        <span class="zone">Downtown SD</span>
+        <span class="zone">Chula Vista</span>
+        <span class="zone">El Cajon</span>
+        <span class="zone">Santee</span>
+        <span class="zone">Coronado</span>
+        <span class="zone">National City</span>
+        <span class="zone">Mira Mesa</span>
+        <span class="zone">Poway</span>
+        <span class="zone">Escondido</span>
+        <span class="zone">Vista</span>
+        <span class="zone">Carlsbad</span>
+        <span class="zone">Encinitas</span>
+        <span class="zone">Solana Beach</span>
+        <span class="zone">Del Mar</span>
+      </div>
+      <p class="area__note">Not sure if we cover your area? <a href="tel:+18589880325">Call us</a> — we'll let you know.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section__header">
+        <span class="label">4.9 Stars &mdash; 47+ Reviews</span>
+        <h2>What Customers Say</h2>
+      </div>
+      <div class="reviews__grid">
+        <div class="review-card">
+          <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"They came to my driveway and fixed a nasty door scratch in under 2 hours. Paint match was dead-on. Way cheaper than any shop quote I got."</p>
+          <cite>&#8212; Marcus T., San Diego</cite>
+        </div>
+        <div class="review-card">
+          <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Sent a photo, got a quote the same hour, booked for next morning. Tech showed up on time and the chip repair is completely invisible. Incredible service."</p>
+          <cite>&#8212; Jennifer R., Chula Vista</cite>
+        </div>
+        <div class="review-card">
+          <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Used them for our dealership lot reconditioning. Fast, consistent quality, and they work around our schedule. Highly recommend for fleet work."</p>
+          <cite>&#8212; Dave S., Fleet Manager</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt" id="faq">
+    <div class="container">
+      <div class="section__header">
+        <span class="label">FAQ</span>
+        <h2>Common Questions</h2>
+      </div>
+      <div class="faq__grid">
+        <div class="faq-item">
+          <button class="faq-item__q">How do I get a quote? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">Text or upload photos of the damage using the form below. We'll respond with a firm price within minutes during business hours — no estimate ranges, just a real number.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">How long does a repair take? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">Most repairs take 1–3 hours on-site. Larger multi-panel jobs may take up to 4 hours. We'll give you a time estimate when we quote the job.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Will the color match exactly? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">Yes. We use your VIN to pull the factory color code and mix paint to exact spec. We also blend into adjacent panels so the repair is invisible under all lighting conditions.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Do I need to do anything to prepare? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">Just make sure the car is clean around the repair area and parked somewhere with reasonable access. We bring everything else — equipment, paint, curing lamps, the works.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">What areas do you cover? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">We cover all of San Diego County — coast to inland. La Jolla, Pacific Beach, Chula Vista, El Cajon, Escondido, and everywhere in between. Call us if you're unsure about your location.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Is there a warranty? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">Yes — all Panel Repair and Full Respray work comes with a 1-year workmanship guarantee. If the repair fails due to our work, we'll fix it at no charge.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Can you work on any vehicle? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">We work on all makes and models — cars, trucks, SUVs, and vans. For exotic or matte-finish vehicles, mention that when requesting a quote so we can prepare appropriately.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Do you work with insurance? <span class="faq-chevron">&#9660;</span></button>
+          <div class="faq-item__a">We can provide documentation for insurance claims. Many customers choose to pay out of pocket to avoid a rate increase — our prices are often below the deductible anyway.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section class="section section--dark" id="quote">
+    <div class="container">
+      <div class="quote__inner">
+        <div class="quote__text">
+          <span class="label label--light">Free Estimate</span>
+          <h2>Get Your Free Quote</h2>
+          <p>Send us photos and details — we respond within 2 hours during business hours with a firm price.</p>
+          <div class="quote__contact">
+            <a href="tel:+18589880325" class="contact-link">&#128222; (858) 988-0325</a>
+            <a href="sms:+18589880325" class="contact-link">&#128172; Text Us Photos</a>
+          </div>
+          <p class="quote__hours">Mon–Fri 7am–7pm &nbsp;|&nbsp; Sat–Sun 8am–5pm</p>
+        </div>
+        <form class="quote-form" id="quoteForm" novalidate>
+          <div class="form__row">
+            <div class="form__group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form__group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="(858) 555-0100" required />
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+            </div>
+            <div class="form__group">
+              <label for="zip">Zip Code *</label>
+              <input type="text" id="zip" name="zip" placeholder="92101" required />
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label for="vehicle">Vehicle (Year, Make, Model) *</label>
+              <input type="text" id="vehicle" name="vehicle" placeholder="2021 Toyota Camry" required />
+            </div>
+            <div class="form__group">
+              <label for="service">Service Needed *</label>
+              <select id="service" name="service" required>
+                <option value="">Select…</option>
+                <option>Paint Chip Repair</option>
+                <option>Scratch Removal</option>
+                <option>Touch-Up &amp; Blending</option>
+                <option>Door Ding Repair</option>
+                <option>Paint Correction</option>
+                <option>Fleet / Dealership</option>
+                <option>Not Sure — Need Assessment</option>
+              </select>
+            </div>
           </div>
           <div class="form__group">
-            <label for="zip">Zip Code *</label>
-            <input type="text" id="zip" name="zip" placeholder="92101" required />
+            <label for="description">Describe the Damage</label>
+            <textarea id="description" name="description" rows="4" placeholder="Where is the damage on the vehicle? How large? Any photos you can text to (858) 988-0325 help us quote faster."></textarea>
           </div>
-        </div>
-        <div class="form__row">
-          <div class="form__group">
-            <label for="vehicle">Vehicle (Year, Make, Model) *</label>
-            <input type="text" id="vehicle" name="vehicle" placeholder="2021 Toyota Camry" required />
+          <button type="submit" class="btn btn--primary btn--large">Send My Quote Request</button>
+          <p class="form__privacy">We never sell or share your info.</p>
+          <div class="form__success" id="formSuccess" hidden>
+            &#10003; Sent! We'll be in touch within 2 hours.
           </div>
-          <div class="form__group">
-            <label for="service">Service Needed *</label>
-            <select id="service" name="service" required>
-              <option value="">Select a service…</option>
-              <option>Paint Chip Repair</option>
-              <option>Scratch Removal</option>
-              <option>Bumper Repair</option>
-              <option>Touch-Up &amp; Blending</option>
-              <option>Door Ding Repair</option>
-              <option>Fleet / Dealership</option>
-              <option>Not Sure — Need Assessment</option>
-            </select>
-          </div>
-        </div>
-        <div class="form__group form__group--full">
-          <label for="description">Describe the Damage</label>
-          <textarea id="description" name="description" rows="4" placeholder="Describe the damage and where it's located on the vehicle. You can also text us photos at (619) 555-0199."></textarea>
-        </div>
-        <button type="submit" class="btn btn--primary btn--large">Send My Quote Request</button>
-        <p class="form__privacy">We respect your privacy. Your info is never sold or shared.</p>
-        <div class="form__success" id="formSuccess" hidden>
-          Thank you! We'll be in touch within 2 hours.
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -279,26 +488,27 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <a href="#home" class="nav__logo">
-          <span class="logo-icon">&#9632;</span> AutoPaint<span class="accent">SD</span>
-        </a>
-        <p>Mobile auto paint repair serving all of San Diego County.</p>
+        <a href="#home" class="footer__logo">AutoPaint<span class="accent">SD</span></a>
+        <p>Mobile auto paint repair serving all of San Diego County. We come to you.</p>
+        <p class="footer__hours">Mon–Fri 7am–7pm &nbsp;|&nbsp; Sat–Sun 8am–5pm</p>
       </div>
       <div class="footer__links">
-        <h4>Quick Links</h4>
+        <h4>Services</h4>
         <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="#services">Paint Chip Repair</a></li>
+          <li><a href="#services">Scratch Removal</a></li>
+          <li><a href="#services">Touch-Up &amp; Blending</a></li>
+          <li><a href="#services">Door Ding Repair</a></li>
+          <li><a href="#services">Paint Correction</a></li>
+          <li><a href="#services">Fleet &amp; Dealership</a></li>
         </ul>
       </div>
       <div class="footer__contact">
         <h4>Contact</h4>
-        <p>&#128222; <a href="tel:+16195550199">(619) 555-0199</a></p>
-        <p>&#9993; <a href="mailto:hello@autopaintsd.com">hello@autopaintsd.com</a></p>
+        <p><a href="tel:+18589880325">&#128222; (858) 988-0325</a></p>
+        <p><a href="sms:+18589880325">&#128172; Text for Photos &amp; Quotes</a></p>
         <p>&#128205; San Diego County, CA</p>
-        <p class="footer__hours">Mon–Sat 7am–6pm &nbsp;|&nbsp; Sun 9am–4pm</p>
+        <a href="#quote" class="btn btn--primary" style="margin-top:16px;display:inline-block;">Free Quote</a>
       </div>
     </div>
     <div class="footer__bottom">
@@ -306,7 +516,12 @@
     </div>
   </footer>
 
-  <a href="#contact" class="floating-cta">Get a Free Quote</a>
+  <!-- STICKY CTA BAR -->
+  <div class="sticky-bar" id="stickyBar">
+    <p>Ready to fix your paint? <strong>Same-day slots available.</strong></p>
+    <a href="#quote" class="btn btn--primary">Get a Free Quote</a>
+    <button class="sticky-bar__close" id="stickyClose">&#10005;</button>
+  </div>
 
   <script src="app.js"></script>
 </body>

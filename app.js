@@ -1,53 +1,57 @@
-// ===== NAV SCROLL EFFECT =====
-const navbar = document.getElementById('navbar');
-const floatingCta = document.querySelector('.floating-cta');
+// ===== TOPBAR DISMISS =====
+document.getElementById('topbarClose').addEventListener('click', () => {
+  document.getElementById('topbar').style.display = 'none';
+});
+
+// ===== MOBILE NAV =====
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// ===== STICKY BAR =====
+const stickyBar  = document.getElementById('stickyBar');
+const stickyClose = document.getElementById('stickyClose');
+let stickyDismissed = false;
 
 window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY > 60;
-  navbar.classList.toggle('scrolled', scrolled);
-  floatingCta.classList.toggle('visible', window.scrollY > 400);
+  if (stickyDismissed) return;
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  stickyBar.classList.toggle('visible', pct > 0.35);
+});
+stickyClose.addEventListener('click', () => {
+  stickyDismissed = true;
+  stickyBar.classList.remove('visible');
 });
 
-// ===== MOBILE NAV TOGGLE =====
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-
-// Close mobile nav when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-item__q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   });
 });
 
 // ===== QUOTE FORM =====
-const form = document.getElementById('quoteForm');
+const form        = document.getElementById('quoteForm');
 const formSuccess = document.getElementById('formSuccess');
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', e => {
   e.preventDefault();
-
-  const required = form.querySelectorAll('[required]');
   let valid = true;
-
-  required.forEach(field => {
+  form.querySelectorAll('[required]').forEach(field => {
     field.style.borderColor = '';
-    if (!field.value.trim()) {
-      field.style.borderColor = '#e63939';
-      valid = false;
-    }
+    if (!field.value.trim()) { field.style.borderColor = '#D92626'; valid = false; }
   });
-
   if (!valid) return;
 
-  // Simulate form submission (replace with real endpoint or FormSpree/Netlify)
   const btn = form.querySelector('button[type="submit"]');
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
+  // Replace this timeout with a real fetch to your form endpoint (e.g. Formspree)
   setTimeout(() => {
     formSuccess.hidden = false;
     form.reset();
@@ -57,21 +61,18 @@ form.addEventListener('submit', (e) => {
   }, 1200);
 });
 
-// ===== SMOOTH SCROLL for all anchor links =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      const offset = 80;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
   });
 });
 
-// ===== SIMPLE SCROLL REVEAL =====
-const observer = new IntersectionObserver((entries) => {
+// ===== SCROLL REVEAL =====
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
@@ -79,11 +80,11 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 
-document.querySelectorAll('.service-card, .step, .testimonial, .gallery-card').forEach(el => {
+document.querySelectorAll('.service-card, .step, .review-card, .job-card, .pricing-card, .faq-item, .zone').forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(24px)';
-  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .45s ease, transform .45s ease';
   observer.observe(el);
 });
