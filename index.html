@@ -1,528 +1,1268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AutoPaint SD — Mobile Auto Paint Repair | San Diego</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoPaint SD — Mobile Auto Paint Repair | San Diego, CA</title>
+  <meta name="description" content="Mobile auto paint repair and cosmetic touch-up service across San Diego County. We come to your home or office. No shop drop-off. Fast photo quote. Call (858) 988-0325."/>
+  <meta property="og:title" content="AutoPaint SD — Mobile Auto Paint Repair · San Diego"/>
+  <meta property="og:description" content="Mobile auto paint repair across San Diego County. We come to you — home or office. Fast photo quote. Call (858) 988-0325."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.autopaintsd.com/"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://www.autopaintsd.com/"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "AutoRepair"],
+    "name": "AutoPaint SD",
+    "description": "Mobile auto paint repair and cosmetic touch-up serving all of San Diego County.",
+    "url": "https://www.autopaintsd.com",
+    "telephone": "+18589880325",
+    "priceRange": "$$",
+    "address": { "@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA", "addressCountry": "US" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 32.7157, "longitude": -117.1611 },
+    "areaServed": { "@type": "AdministrativeArea", "name": "San Diego County" },
+    "openingHours": ["Mo-Fr 07:00-19:00", "Sa-Su 08:00-17:00"],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "47" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #0C0C0C;
+      --bg2:     #161616;
+      --bg3:     #1F1F1F;
+      --white:   #FFFFFF;
+      --ink:     #FFFFFF;
+      --ink2:    #E0E0E0;
+      --mid:     #888888;
+      --line:    rgba(255,255,255,0.09);
+      --dark:    #080808;
+      --red:     #D92626;
+      --red2:    #B81E1E;
+      --rainbow: linear-gradient(90deg,#FF0000 0%,#FF6600 14%,#FFD600 28%,#00CC44 42%,#0088FF 57%,#6600FF 71%,#CC00FF 85%,#FF0066 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    /* ── HEADER ── */
+    .site-header { position: sticky; top: 0; z-index: 300; }
+
+    /* Marquee topbar */
+    .topbar { background: var(--red); height: 38px; overflow: hidden; display: flex; align-items: center; position: relative; transition: height 0.3s ease, opacity 0.3s ease; }
+    .topbar.hidden { height: 0; opacity: 0; }
+    .topbar::before, .topbar::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .topbar::before { left: 0; background: linear-gradient(90deg, var(--red), transparent); }
+    .topbar::after  { right: 0; background: linear-gradient(270deg, var(--red), transparent); }
+    .topbar-track { display: flex; white-space: nowrap; animation: topbarScroll 32s linear infinite; }
+    .topbar-track:hover { animation-play-state: paused; }
+    .topbar-item { display: inline-flex; align-items: center; gap: 10px; font-family: 'Anton', sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); padding: 0 28px; flex-shrink: 0; }
+    .topbar-item a { color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); }
+    .topbar-sep { display: inline-block; width: 5px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 50%; flex-shrink: 0; }
+    @keyframes topbarScroll { 0%{ transform: translateX(0); } 100%{ transform: translateX(-50%); } }
+
+    /* Nav */
+    nav { background: rgba(12,12,12,0.98); border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; padding: 14px 48px; backdrop-filter: blur(12px); }
+    .nav-brand { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: var(--white); }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-phone { color: var(--white) !important; font-weight: 800 !important; background: var(--red) !important; padding: 8px 16px !important; border-radius: 6px !important; font-size: 14px !important; transition: background 0.2s !important; }
+    .nav-phone:hover { background: var(--red2) !important; }
+    .nav-cta { background: transparent !important; border: 1px solid rgba(255,255,255,0.25) !important; color: var(--white) !important; padding: 8px 18px !important; border-radius: 6px !important; font-weight: 600 !important; font-size: 14px !important; transition: border-color 0.2s, background 0.2s !important; }
+    .nav-cta:hover { border-color: var(--white) !important; background: rgba(255,255,255,0.05) !important; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-dropdown > a::after { content: '▾'; font-size: 10px; opacity: 0.6; }
+    .nav-dropdown-menu { display: grid; position: absolute; top: 100%; padding-top: 14px; left: 50%; transform: translateX(-50%); background: rgba(18,18,18,0.98); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px; min-width: 340px; grid-template-columns: 1fr 1fr; gap: 2px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; transform: translateX(-50%) translateY(-6px); backdrop-filter: blur(16px); }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown-menu:hover { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-menu a { text-decoration: none; color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .nav-dropdown-menu .dd-all { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 4px; padding-top: 10px; color: var(--red) !important; font-weight: 700 !important; text-align: center; }
+    .nav-dropdown-menu .dd-all:hover { background: rgba(220,38,38,0.1) !important; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu { display: none; background: var(--bg2); border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 24px; flex-direction: column; gap: 4px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { text-decoration: none; color: var(--ink2); font-size: 16px; font-weight: 500; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mm-phone { font-weight: 700 !important; color: var(--red) !important; font-size: 18px !important; }
+    .mm-cta { background: var(--red) !important; color: var(--white) !important; text-align: center; border-radius: 6px; font-weight: 700 !important; padding: 14px !important; border-bottom: none !important; margin-top: 8px; }
+
+    /* Availability bar */
+    .avail-bar { background: var(--bg2); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 48px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, opacity 0.35s ease, padding 0.35s ease; }
+    .avail-bar.visible { max-height: 52px; opacity: 1; padding-top: 9px; padding-bottom: 9px; }
+    .avail-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .avail-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 100px; padding: 4px 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4ADE80; white-space: nowrap; }
+    .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; animation: availPulse 2s infinite; flex-shrink: 0; }
+    @keyframes availPulse { 0%{box-shadow:0 0 0 0 rgba(34,197,94,0.6)} 70%{box-shadow:0 0 0 6px rgba(34,197,94,0)} 100%{box-shadow:0 0 0 0 rgba(34,197,94,0)} }
+    .avail-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+    .avail-slots { font-size: 12px; color: var(--mid); white-space: nowrap; }
+    .avail-slots strong { color: var(--white); }
+    .avail-right { display: flex; align-items: center; gap: 12px; }
+    .avail-phone { font-family: 'Anton', sans-serif; font-size: 16px; color: var(--red); text-decoration: none; }
+    .avail-phone:hover { opacity: 0.8; }
+    .avail-cta { background: var(--red); color: var(--white); padding: 6px 16px; border-radius: 5px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+    .avail-cta:hover { background: var(--red2); }
+
+    /* ── HERO ── */
+    .hero { min-height: 88vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+    .hero-left { background: var(--bg); padding: 72px 60px 56px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .hero-left-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 60% at 100% 0%, rgba(217,38,38,0.12) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 0% 100%, rgba(217,38,38,0.05) 0%, transparent 55%); }
+    .hero-left-texture { position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.012) 20px, rgba(255,255,255,0.012) 21px); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(217,38,38,0.15); border: 1px solid rgba(217,38,38,0.35); border-radius: 100px; padding: 7px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FF6666; width: fit-content; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.1s forwards; }
+    .badge-pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.5)} }
+    .hero-title-fall { display:flex; flex-direction:column; gap:0; margin-bottom:14px; line-height:0.88; font-family:'Anton',sans-serif; font-size:clamp(52px,7vw,100px); letter-spacing:0.01em; overflow:hidden; }
+    .hero-title-fall .hero-line { display:block; white-space:nowrap; opacity:0; transform:translateY(-200px) scaleY(0.7); transform-origin:top center; will-change:transform,opacity; }
+    .hero-title-fall .hero-line-red { color:var(--red); -webkit-text-fill-color:var(--red); }
+    .hero-title-fall.is-animating .hero-line { animation:heroLineDrop 0.78s cubic-bezier(0.12,0,0.2,1) forwards; }
+    @keyframes heroLineDrop { 0%{opacity:0;transform:translateY(-200px) scaleY(0.7);} 50%{opacity:1;} 62%{transform:translateY(14px) scaleY(0.84);} 76%{transform:translateY(-6px) scaleY(1.04);} 88%{transform:translateY(4px) scaleY(0.98);} 100%{opacity:1;transform:translateY(0) scaleY(1);} }
+    .hero-location { font-family: 'Anton', sans-serif; font-size: clamp(15px, 1.8vw, 20px); letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s 0.3s forwards; }
+    .hero-location span { color: var(--red); -webkit-text-fill-color: var(--red); }
+    .hero-desc { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 420px; line-height: 1.75; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.8s 0.38s forwards; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; opacity: 0; animation: fadeUp 0.8s 0.5s forwards; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 9px; background: var(--red); color: var(--white); padding: 15px 32px; border-radius: 6px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: var(--red2); transform: translateY(-2px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.65); font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+    .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+    .btn-sms { display: inline-flex; align-items: center; gap: 7px; color: #4ADE80; font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid rgba(74,222,128,0.3); padding: 8px 16px; border-radius: 6px; transition: all 0.2s; }
+    .btn-sms:hover { border-color: #4ADE80; background: rgba(74,222,128,0.06); }
+    .hero-trust { display: grid; grid-template-columns: repeat(4, auto); gap: 24px; margin-top: 44px; opacity: 0; animation: fadeUp 0.8s 0.65s forwards; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; width: fit-content; }
+    .trust-item { display: flex; align-items: center; gap: 10px; }
+    .trust-num { font-family: 'Anton', sans-serif; font-size: 34px; color: var(--red); line-height: 1; }
+    .trust-label { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.4; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Hero right */
+    .hero-right { background: var(--bg2); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .hero-map { flex: 1; position: relative; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
+    .hero-map-placeholder { text-align: center; color: rgba(255,255,255,0.3); }
+    .hero-map-placeholder p { font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 0.06em; margin-top: 12px; }
+    .hero-map-placeholder span { font-size: 13px; font-weight: 400; display: block; margin-top: 6px; color: rgba(255,255,255,0.2); }
+    .map-pin-icon { font-size: 64px; }
+    .hero-service-bar { background: var(--bg3); border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 32px; display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .hsb-item { text-align: center; }
+    .hsb-icon { font-size: 20px; margin-bottom: 3px; }
+    .hsb-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip { background: #0A0A0A; display: flex; justify-content: center; align-items: center; overflow: hidden; flex-wrap: wrap; padding: 20px 48px; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .ts-item { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 9px 18px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); white-space: nowrap; }
+    .ts-icon { font-size: 18px; }
+    .ts-hl { font-weight: 800; color: var(--red); }
+
+    /* ── SECTION COMMONS ── */
+    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .section-tag::before { content: ''; width: 20px; height: 2px; background: var(--red); flex-shrink: 0; }
+    h2.section-h { font-family: 'Anton', sans-serif; font-size: clamp(40px, 5vw, 72px); letter-spacing: 0.01em; line-height: 0.92; margin-bottom: 18px; }
+    .section-p { font-size: 16px; color: var(--mid); line-height: 1.75; max-width: 500px; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── SERVICES ── */
+    #services { padding: 88px 48px; background: var(--bg); }
+    .services-header { margin-bottom: 52px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .service-card { background: var(--bg2); padding: 40px 32px; position: relative; overflow: hidden; transition: background 0.3s; }
+    .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--red); transition: width 0.4s ease; }
+    .service-card:hover { background: var(--bg3); }
+    .service-card:hover::after { width: 100%; }
+    .sc-icon { font-size: 34px; margin-bottom: 18px; }
+    .sc-title { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.03em; margin-bottom: 10px; line-height: 1.1; color: var(--white); }
+    .sc-desc { font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 18px; }
+    .sc-time { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); }
+    .sc-num { position: absolute; bottom: 16px; right: 24px; font-family: 'Anton', sans-serif; font-size: 64px; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
+
+    /* Inline CTA strip */
+    .inline-cta { background: var(--bg3); border-top: 3px solid var(--red); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .inline-cta-text { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.03em; color: var(--white); }
+    .inline-cta-text span { color: var(--red); }
+    .inline-cta-sub { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .btn-sm { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: var(--white); padding: 13px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.2s; flex-shrink: 0; }
+    .btn-sm:hover { background: var(--red2); }
+
+    /* ── HOW IT WORKS ── */
+    #how { padding: 88px 48px; background: #111111; border-top: 3px solid var(--red); position: relative; overflow: hidden; }
+    #how::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255,255,255,0.012) 30px, rgba(255,255,255,0.012) 31px); }
+    .how-header { margin-bottom: 60px; }
+    .how-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .how-grid::before { content: ''; position: absolute; top: 44px; left: 12%; right: 12%; height: 1px; background: var(--red); opacity: 0.4; }
+    .how-step { padding-right: 28px; }
+    .how-num { width: 88px; height: 88px; border: 2px solid var(--red); background: #111111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Anton', sans-serif; font-size: 30px; color: var(--red); margin-bottom: 26px; }
+    .how-title { font-family: 'Anton', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: var(--white); margin-bottom: 10px; }
+    .how-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    /* ── RESULTS ── */
+    #results { padding: 88px 48px; background: var(--bg2); border-top: 1px solid rgba(217,38,38,0.2); }
+    .results-stats { display: flex; align-items: center; justify-content: space-between; background: var(--bg3); border: 1px solid rgba(217,38,38,0.15); border-radius: 16px; padding: 40px 48px; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
+    .rs-stat { text-align: center; flex: 1; min-width: 120px; }
+    .rs-num { font-family: 'Anton', sans-serif; font-size: clamp(44px, 5vw, 68px); line-height: 1; color: var(--white); letter-spacing: -0.01em; }
+    .rs-suffix { color: var(--red); font-size: 0.6em; vertical-align: super; }
+    .rs-label { font-size: 12px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; line-height: 1.4; }
+    .rs-divider { width: 1px; height: 60px; background: rgba(255,255,255,0.07); flex-shrink: 0; }
+    .rj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .rj-card { background: var(--bg3); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); transition: border-color 0.3s, transform 0.3s; }
+    .rj-card:hover { border-color: var(--red); transform: translateY(-4px); }
+    .rj-photo { height: 180px; background: #1A1A1A; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+    .rj-photo-icon { font-size: 36px; opacity: 0.35; }
+    .rj-photo-txt { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+    .rj-body { padding: 20px 22px; }
+    .rj-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); border: 1px solid rgba(217,38,38,0.35); border-radius: 3px; padding: 3px 9px; margin-bottom: 10px; }
+    .rj-title { font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 0.03em; color: var(--white); margin-bottom: 8px; line-height: 1.2; }
+    .rj-meta { font-size: 12px; color: var(--mid); margin-bottom: 8px; }
+    .rj-time { color: var(--red); font-weight: 600; }
+    .rj-saved { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .rj-saved strong { color: #4ADE80; }
+
+    /* ── PRICING ── */
+    #pricing { padding: 88px 48px; background: #F4F4F4; border-top: 3px solid var(--red); }
+    .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; flex-wrap: wrap; gap: 20px; }
+    #pricing .section-tag { color: var(--red); }
+    #pricing .section-tag::before { background: var(--red); }
+    #pricing h2.section-h { color: #111; }
+    .pricing-note { font-size: 13px; color: #666; max-width: 260px; text-align: right; line-height: 1.6; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .price-card { background: #FFFFFF; padding: 40px 32px; border-bottom: 4px solid transparent; border: 1px solid #E0E0E0; position: relative; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .price-card:hover { border-bottom-color: var(--red); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .price-card.popular { background: #111111; border-bottom-color: var(--red); transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 40px rgba(217,38,38,0.2); border-color: transparent; }
+    .price-card.popular:hover { transform: translateY(-14px); }
+    .popular-tag { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--red); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 16px; border-radius: 0 0 8px 8px; white-space: nowrap; }
+    .pc-type { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+    .pc-name { font-family: 'Anton', sans-serif; font-size: 24px; letter-spacing: 0.03em; margin-bottom: 6px; color: #111; }
+    .price-card.popular .pc-name { color: var(--white); }
+    .pc-dealer { font-size: 12px; color: #999; margin-bottom: 4px; }
+    .pc-dealer s { color: #bbb; }
+    .price-card.popular .pc-dealer { color: rgba(255,255,255,0.3); }
+    .price-card.popular .pc-dealer s { color: rgba(255,255,255,0.2); }
+    .pc-saving { font-size: 12px; color: #4ADE80; font-weight: 700; margin-bottom: 6px; }
+    .pc-price { font-family: 'Anton', sans-serif; font-size: 52px; letter-spacing: -0.01em; line-height: 1; margin-bottom: 4px; color: #111; }
+    .price-card.popular .pc-price { color: var(--red); }
+    .pc-from { font-size: 12px; color: #888; margin-bottom: 24px; }
+    .pc-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
+    .pc-features li { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: #666; line-height: 1.5; }
+    .price-card.popular .pc-features li { color: rgba(255,255,255,0.55); }
+    .pc-features li::before { content: '✓'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+    .pc-btn { display: block; text-align: center; text-decoration: none; padding: 13px; border-radius: 6px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.2s; }
+    .pc-btn-outline { border: 1px solid #DDD; color: #333; }
+    .pc-btn-outline:hover { border-color: var(--red); color: var(--red); }
+    .pc-btn-fill { background: var(--red); color: var(--white); }
+    .pc-btn-fill:hover { background: var(--red2); }
+    .guarantee-badge { display: inline-flex; align-items: center; gap: 14px; background: #111; border: 2px solid rgba(217,38,38,0.4); border-radius: 12px; padding: 18px 28px; margin-top: 40px; }
+    .gb-icon { width: 48px; height: 48px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .gb-title { font-family: 'Anton', sans-serif; font-size: 17px; letter-spacing: 0.04em; color: var(--white); line-height: 1.1; }
+    .gb-sub { font-size: 12px; color: var(--mid); margin-top: 3px; }
+
+    /* ── COMPARE ── */
+    #compare { padding: 88px 48px; background: #131313; border-top: 1px solid rgba(255,255,255,0.06); }
+    .compare-header { margin-bottom: 52px; }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th { padding: 18px 24px; text-align: left; font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 0.04em; color: var(--white); }
+    .compare-table th:first-child { width: 36%; background: transparent; color: var(--mid); }
+    .compare-table th.shop-col { background: #1A1A1A; color: var(--mid); border-radius: 10px 10px 0 0; text-align: center; }
+    .compare-table th.bf-col { background: #1F0A0A; color: var(--white); border-radius: 10px 10px 0 0; text-align: center; }
+    .compare-table th.bf-col .bf-badge { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #FF8888; margin-top: 2px; }
+    .compare-table td { padding: 16px 24px; border-bottom: 1px solid var(--line); font-size: 14px; vertical-align: middle; }
+    .compare-table td:first-child { font-weight: 600; color: var(--ink2); }
+    .compare-table td.shop-val { background: #1A1A1A; text-align: center; color: var(--mid); }
+    .compare-table td.bf-val { background: #170A0A; text-align: center; color: rgba(255,255,255,0.7); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:last-child td.bf-val { border-radius: 0 0 10px 10px; }
+    .c-good { color: #4ADE80; font-weight: 700; }
+    .c-bad { color: #F87171; }
+    .faq-nudge { background: #111; border-top: 1px solid rgba(217,38,38,0.15); border-bottom: 1px solid rgba(217,38,38,0.15); padding: 22px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .faq-nudge-text { font-size: 15px; color: rgba(255,255,255,0.6); }
+    .faq-nudge-text strong { color: var(--white); }
+    .faq-nudge-link { font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(217,38,38,0.4); padding-bottom: 1px; }
+
+    /* ── SERVICE AREA ── */
+    #area { padding: 0; background: var(--bg); border-top: 1px solid rgba(255,255,255,0.06); }
+    .area-header { padding: 56px 48px 32px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; }
+    .area-stats { display: flex; gap: 32px; flex-shrink: 0; }
+    .area-stat { text-align: center; }
+    .area-stat-num { font-family: 'Anton', sans-serif; font-size: 36px; color: var(--red); line-height: 1; }
+    .area-stat-label { font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+    .area-chips-wrap { padding: 28px 48px; background: var(--bg2); border-top: 1px solid var(--line); }
+    .chips-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-bottom: 12px; }
+    .chips-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .bf-chip { background: var(--bg3); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 6px 14px; font-size: 13px; font-weight: 500; cursor: default; display: flex; align-items: center; gap: 7px; color: var(--ink2); }
+    .bf-chip::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+
+    /* ── REVIEWS ── */
+    #reviews { padding: 88px 48px; background: #1A1A1A; }
+    .reviews-top { display: flex; gap: 48px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 52px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .review-card { background: #FFFFFF; border-radius: 12px; padding: 32px; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s, transform 0.3s; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+    .review-card:hover { border-color: var(--red); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .review-stars { color: var(--red); font-size: 17px; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text { font-size: 15px; color: #333; line-height: 1.75; margin-bottom: 22px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--red); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Anton', sans-serif; font-size: 15px; flex-shrink: 0; }
+    .review-name { font-size: 14px; font-weight: 700; color: #111; }
+    .review-car { font-size: 12px; color: #888; margin-top: 2px; }
+    .reviews-score { font-family: 'Anton', sans-serif; font-size: 68px; line-height: 1; color: var(--white); }
+    .reviews-stars { color: var(--red); font-size: 22px; letter-spacing: 3px; }
+    .reviews-count { font-size: 14px; color: var(--mid); margin-top: 4px; }
+
+    /* ── FAQ ── */
+    #faq { padding: 88px 48px; background: #F0F0F0; border-top: 3px solid var(--red); }
+    .faq-header { margin-bottom: 52px; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #DDD; border: 1px solid #DDD; max-width: 960px; }
+    .faq-item { background: #FFFFFF; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 22px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: #111; line-height: 1.4; transition: background 0.2s; }
+    .faq-question:hover, .faq-question.open { background: #F8F8F8; }
+    .faq-chevron { font-size: 18px; color: var(--red); flex-shrink: 0; margin-left: 12px; transition: transform 0.3s; }
+    .faq-question.open .faq-chevron { transform: rotate(45deg); }
+    .faq-answer { display: none; padding: 0 24px 20px; font-size: 14px; color: #555; line-height: 1.75; }
+    .faq-answer.open { display: block; }
+
+    /* ── QUOTE ── */
+    #quote { padding: 88px 48px; background: var(--red); position: relative; overflow: hidden; }
+    #quote::before { content: 'PAINT'; position: absolute; right: -40px; top: 50%; transform: translateY(-50%); font-family: 'Anton', sans-serif; font-size: 220px; color: rgba(0,0,0,0.08); line-height: 1; pointer-events: none; }
+    .quote-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; position: relative; }
+    .quote-title { font-family: 'Anton', sans-serif; font-size: clamp(40px, 5vw, 68px); line-height: 0.93; letter-spacing: 0.02em; color: var(--white); margin-bottom: 18px; }
+    .quote-desc { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.75; }
+    .quote-form { background: var(--white); border-radius: 12px; padding: 36px; box-shadow: 0 24px 64px rgba(0,0,0,0.35); }
+    .qf-title { font-family: 'Anton', sans-serif; font-size: 24px; letter-spacing: 0.03em; margin-bottom: 4px; color: #111; }
+    .qf-sub { font-size: 13px; color: #666; margin-bottom: 18px; }
+    .scarcity-badge { display: flex; align-items: center; gap: 10px; background: #FFF8F0; border: 1px solid #FDD8A0; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; }
+    .sc-dot { width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; flex-shrink: 0; animation: scPulse 2s infinite; }
+    @keyframes scPulse { 0%{box-shadow:0 0 0 0 rgba(245,158,11,0.6)} 70%{box-shadow:0 0 0 7px rgba(245,158,11,0)} 100%{box-shadow:0 0 0 0 rgba(245,158,11,0)} }
+    .sc-text { font-size: 13px; font-weight: 600; color: #92400E; }
+    .sc-text span { font-weight: 800; }
+    .qf-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .qf-input { width: 100%; padding: 12px 15px; border: 1px solid #E0E0E0; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #111; background: #F8F8F8; outline: none; transition: border-color 0.2s, background 0.2s; }
+    .qf-input:focus { border-color: var(--red); background: white; }
+    .qf-input::placeholder { color: #aaa; }
+    .qf-select { width: 100%; padding: 12px 15px; border: 1px solid #E0E0E0; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #111; background: #F8F8F8; outline: none; cursor: pointer; appearance: none; margin-bottom: 6px; }
+    .qf-hint { font-size: 11px; color: #aaa; margin-bottom: 14px; }
+    .qf-btn { width: 100%; padding: 15px; background: var(--red); color: white; border: none; border-radius: 6px; cursor: pointer; font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 0.04em; transition: background 0.2s; }
+    .qf-btn:hover { background: var(--red2); }
+    .qf-btn:disabled { background: #4ADE80; cursor: default; }
+    .form-trust { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+    .ft-item { font-size: 11px; color: #888; display: flex; align-items: center; gap: 5px; }
+    .hours-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #888; margin-bottom: 16px; }
+    .hours-open { display: inline-flex; align-items: center; gap: 5px; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25); border-radius: 100px; padding: 2px 10px; font-size: 11px; font-weight: 700; color: #4ADE80; letter-spacing: 0.06em; text-transform: uppercase; }
+    .hours-open.closed { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.25); color: #F87171; }
+    .hours-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; }
+    .hours-open.closed .hours-dot { background: #EF4444; }
+    .form-sms-link { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700; color: #25D366; text-decoration: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid #eee; }
+    .form-sms-link:hover { opacity: 0.8; }
+
+    /* ── FOOTER ── */
+    footer { background: #080808; padding: 60px 48px 28px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 48px; }
+    .footer-brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .footer-brand-name { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: var(--white); }
+    .footer-brand-name span { color: var(--red); }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 220px; margin-bottom: 16px; }
+    .footer-phone { font-family: 'Anton', sans-serif; font-size: 22px; color: var(--red); text-decoration: none; letter-spacing: 0.03em; display: block; }
+    .footer-hours { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 10px; }
+    .referral-strip { background: rgba(217,38,38,0.08); border: 1px solid rgba(217,38,38,0.2); border-radius: 10px; padding: 14px 18px; margin-top: 18px; display: flex; align-items: center; gap: 12px; }
+    .referral-icon { font-size: 22px; flex-shrink: 0; }
+    .referral-text { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .referral-text strong { color: var(--white); }
+    .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-links a { text-decoration: none; color: rgba(255,255,255,0.45); font-size: 14px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--red); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.2); flex-wrap: wrap; gap: 8px; }
+
+    /* ── STICKY CTA BAR ── */
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 400; background: #080808; border-top: 2px solid var(--red); padding: 12px 48px; display: flex; justify-content: space-between; align-items: center; gap: 16px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-left { display: flex; align-items: center; gap: 14px; }
+    .sticky-brand { font-family: 'Anton', sans-serif; font-size: 16px; letter-spacing: 0.04em; color: var(--white); }
+    .sticky-tagline { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .sticky-actions { display: flex; gap: 12px; align-items: center; }
+    .sticky-phone { font-family: 'Anton', sans-serif; font-size: 18px; color: var(--red); text-decoration: none; }
+    .sticky-btn { background: var(--red); color: white; padding: 10px 22px; border-radius: 5px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-decoration: none; transition: background 0.2s; }
+    .sticky-btn:hover { background: var(--red2); }
+    .sticky-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.3); font-size: 20px; padding: 4px 8px; }
+    .sticky-close:hover { color: var(--white); }
+
+    /* ── WHATSAPP ── */
+    .wa-btn { position: fixed; bottom: 88px; right: 24px; z-index: 500; width: 54px; height: 54px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; font-size: 26px; transition: transform 0.2s, box-shadow 0.2s; animation: waPop 0.5s 2s cubic-bezier(0.175,0.885,0.32,1.275) both; }
+    .wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+    @keyframes waPop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+    .wa-tooltip { position: absolute; right: 62px; top: 50%; transform: translateY(-50%); background: #111; color: white; font-size: 12px; font-weight: 600; white-space: nowrap; padding: 6px 12px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+    .wa-btn:hover .wa-tooltip { opacity: 1; }
+
+    /* ── EXIT INTENT ── */
+    .exit-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .exit-overlay.show { opacity: 1; pointer-events: all; }
+    .exit-modal { background: var(--bg2); border: 1px solid rgba(217,38,38,0.3); border-radius: 16px; padding: 48px 44px; max-width: 480px; width: 100%; position: relative; text-align: center; }
+    .exit-close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: var(--mid); font-size: 22px; }
+    .exit-close:hover { color: var(--white); }
+    .exit-icon { font-size: 48px; margin-bottom: 16px; }
+    .exit-title { font-family: 'Anton', sans-serif; font-size: 32px; letter-spacing: 0.03em; color: var(--white); margin-bottom: 10px; line-height: 1.1; }
+    .exit-title span { color: var(--red); }
+    .exit-sub { font-size: 15px; color: var(--mid); line-height: 1.7; margin-bottom: 28px; }
+    .exit-form { display: flex; gap: 10px; }
+    .exit-input { flex: 1; padding: 13px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); background: var(--bg3); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; }
+    .exit-input::placeholder { color: var(--mid); }
+    .exit-input:focus { border-color: var(--red); }
+    .exit-submit { background: var(--red); color: white; border: none; border-radius: 8px; padding: 13px 22px; cursor: pointer; font-family: 'Anton', sans-serif; font-size: 16px; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; }
+    .exit-submit:hover { background: var(--red2); }
+    .exit-note { font-size: 11px; color: var(--mid); margin-top: 12px; }
+    .exit-dismiss { display: block; margin-top: 16px; font-size: 13px; color: var(--mid); background: none; border: none; cursor: pointer; text-decoration: underline; }
+    .exit-dismiss:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav, .topbar { padding-left: 20px; padding-right: 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 64px 24px 44px; }
+      .hero-right { min-height: 260px; }
+      .hero-trust { grid-template-columns: repeat(2, auto); gap: 20px 28px; }
+      .trust-strip { overflow-x: auto; justify-content: flex-start; }
+      #services { padding: 56px 24px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      #how { padding: 56px 24px; }
+      .how-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .how-grid::before { display: none; }
+      #results { padding: 56px 24px; }
+      .rj-grid { grid-template-columns: 1fr 1fr; }
+      #pricing { padding: 56px 24px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .price-card.popular { transform: none; }
+      #compare { padding: 56px 24px; }
+      .faq-nudge { padding: 18px 24px; }
+      .area-header { padding: 36px 24px 24px; }
+      .area-chips-wrap { padding: 20px 24px; }
+      #reviews { padding: 56px 24px; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      #faq { padding: 56px 24px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      #quote { padding: 56px 24px; }
+      .quote-inner { grid-template-columns: 1fr; gap: 40px; }
+      footer { padding: 40px 24px 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .sticky-cta { padding: 12px 20px; }
+      .inline-cta { padding: 20px 24px; }
+    }
+    @media (max-width: 540px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .rj-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-trust { grid-template-columns: repeat(2, auto); }
+      .results-stats { flex-direction: column; align-items: center; }
+      .rs-divider { width: 60px; height: 1px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- MARQUEE TOPBAR -->
-  <div class="topbar" id="topbar">
-    <div class="topbar__track">
-      <span>Same-Day Service Available &nbsp;&#9830;&nbsp; We Come To You &nbsp;&#9830;&nbsp; Free Photo Quotes in Minutes &nbsp;&#9830;&nbsp; Serving All San Diego County &nbsp;&#9830;&nbsp; Same-Day Service Available &nbsp;&#9830;&nbsp; We Come To You &nbsp;&#9830;&nbsp; Free Photo Quotes in Minutes &nbsp;&#9830;&nbsp; Serving All San Diego County &nbsp;&#9830;</span>
+<header class="site-header">
+  <!-- Marquee topbar -->
+  <div class="topbar">
+    <div class="topbar-track">
+      <span class="topbar-item">Same-Day Available<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Mobile Paint Repair — We Come To You<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Free Photo Quote in Minutes<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Factory Color Match Guaranteed<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Serving All San Diego County<span class="topbar-sep"></span></span>
+      <span class="topbar-item"><a href="tel:+18589880325">(858) 988-0325</a><span class="topbar-sep"></span></span>
+      <span class="topbar-item">Same-Day Available<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Mobile Paint Repair — We Come To You<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Free Photo Quote in Minutes<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Factory Color Match Guaranteed<span class="topbar-sep"></span></span>
+      <span class="topbar-item">Serving All San Diego County<span class="topbar-sep"></span></span>
+      <span class="topbar-item"><a href="tel:+18589880325">(858) 988-0325</a><span class="topbar-sep"></span></span>
     </div>
-    <button class="topbar__close" id="topbarClose" aria-label="Close">&#10005;</button>
   </div>
 
-  <!-- NAV -->
-  <nav class="nav" id="navbar">
-    <div class="nav__inner">
-      <a href="#home" class="nav__logo">AutoPaint<span class="accent">SD</span></a>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#area">Service Area</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#quote" class="btn btn--nav">Get a Free Quote</a></li>
-      </ul>
-      <a href="tel:+18589880325" class="nav__phone">&#128222; (858) 988-0325</a>
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="nav-logo">AutoPaint<span>SD</span></span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="#services">Services</a>
+        <div class="nav-dropdown-menu">
+          <a href="#services">Paint Chip Repair</a>
+          <a href="#services">Scratch Removal</a>
+          <a href="#services">Touch-Up &amp; Blending</a>
+          <a href="#services">Door Ding Repair</a>
+          <a href="#services">Paint Correction</a>
+          <a href="#services">Fleet &amp; Dealership</a>
+          <a href="#services" class="dd-all">View All Services →</a>
+        </div>
+      </div>
+      <a href="#pricing">Pricing</a>
+      <a href="#area">Service Area</a>
+      <a href="#faq">FAQ</a>
+      <a href="tel:+18589880325" class="nav-phone">&#128222; (858) 988-0325</a>
+      <a href="#quote" class="nav-cta">Free Quote</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero__left">
-      <div class="hero__badge">&#9679; Available Today in San Diego</div>
-      <h1 class="hero__title">
-        <span class="drop">Mobile</span>
-        <span class="drop">Auto Paint</span>
-        <span class="drop accent">Repair.</span>
-      </h1>
-      <p class="hero__sub">Scratches, chips, scuffs, and faded paint — fixed at your home or office. No shop drop-off. No waiting.</p>
-      <div class="hero__ctas">
-        <a href="#quote" class="btn btn--primary">Get a Free Quote</a>
-        <a href="tel:+18589880325" class="btn btn--outline">&#128222; Call Now</a>
-      </div>
-      <div class="hero__stats">
-        <div class="stat"><strong>500+</strong><span>Repairs Done</span></div>
-        <div class="stat"><strong>4.9 &#9733;</strong><span>47+ Reviews</span></div>
-        <div class="stat"><strong>5 Yrs</strong><span>Experience</span></div>
-        <div class="stat"><strong>Same Day</strong><span>Available</span></div>
-      </div>
-    </div>
-    <div class="hero__right">
-      <div class="hero__map-placeholder">
-        <div class="map-pin">&#128205;</div>
-        <p>San Diego County</p>
-        <p class="map-sub">We come to your location</p>
-        <div class="map-zones">
-          <span>La Jolla</span><span>Pacific Beach</span><span>Chula Vista</span>
-          <span>Mission Valley</span><span>El Cajon</span><span>Coronado</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST STRIP -->
-  <div class="trust-strip">
-    <div class="trust-strip__inner">
-      <div class="trust-item"><span class="trust-icon">&#9989;</span> No Shop Drop-Off</div>
-      <div class="trust-item"><span class="trust-icon">&#9989;</span> Factory Color Match</div>
-      <div class="trust-item"><span class="trust-icon">&#9989;</span> Price Confirmed Before Work</div>
-      <div class="trust-item"><span class="trust-icon">&#9989;</span> 1-Year Guarantee</div>
-      <div class="trust-item"><span class="trust-icon">&#9989;</span> Licensed &amp; Insured</div>
-    </div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#area">Service Area</a>
+    <a href="#faq">FAQ</a>
+    <a href="tel:+18589880325" class="mm-phone">&#128222; (858) 988-0325</a>
+    <a href="#quote" class="mm-cta">Get a Free Quote</a>
   </div>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">What We Fix</span>
-        <h2>Our Services</h2>
-        <p>Every repair done on-site at your location — no tow trucks, no rentals, no waiting rooms.</p>
-      </div>
-      <div class="services__grid">
-        <div class="service-card">
-          <div class="service-card__icon">&#127775;</div>
-          <h3>Paint Chip Repair</h3>
-          <p>Rock chips and road debris leave ugly bare-metal spots. We fill, prime, and color-match so they vanish.</p>
-          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">&#128295;</div>
-          <h3>Scratch Removal</h3>
-          <p>Key scratches, parking scuffs — we sand, prime, and repaint the panel. Invisible results guaranteed.</p>
-          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">&#10024;</div>
-          <h3>Touch-Up &amp; Blending</h3>
-          <p>Full panel color-matching and edge blending so the repair disappears under any lighting condition.</p>
-          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">&#128663;</div>
-          <h3>Door Ding Repair</h3>
-          <p>Parking-lot door dings removed and painted without the cost of a full panel respray.</p>
-          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">&#127775;</div>
-          <h3>Paint Correction</h3>
-          <p>Oxidized, faded, or swirl-marked paint restored to a deep, glossy finish on-site.</p>
-          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">&#127973;</div>
-          <h3>Fleet &amp; Dealership</h3>
-          <p>High-volume reconditioning on your lot, on your schedule. Ask about fleet rates.</p>
-          <a href="#quote" class="service-card__link">Get a Quote &#8594;</a>
-        </div>
-      </div>
+  <!-- Availability bar -->
+  <div class="avail-bar" id="availBar">
+    <div class="avail-left">
+      <div class="avail-pill"><span class="avail-dot"></span> Taking Bookings</div>
+      <div class="avail-divider"></div>
+      <div class="avail-slots" id="availSlots">&#9889; <strong>3 spots</strong> open today</div>
     </div>
-  </section>
-
-  <!-- INLINE CTA STRIP -->
-  <div class="cta-strip">
-    <div class="container cta-strip__inner">
-      <p>Ready to get your car looking new again?</p>
-      <a href="#quote" class="btn btn--primary">Get My Free Quote</a>
+    <div class="avail-right">
+      <a href="tel:+18589880325" class="avail-phone">(858) 988-0325</a>
+      <a href="#quote" class="avail-cta">Book Now</a>
     </div>
   </div>
+</header>
 
-  <!-- HOW IT WORKS -->
-  <section class="section section--alt" id="how">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">Simple Process</span>
-        <h2>How It Works</h2>
-        <p>Four steps from photo to perfect finish.</p>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-left-bg"></div>
+    <div class="hero-left-texture"></div>
+    <div class="hero-badge"><span class="badge-pulse"></span> Available Today in San Diego</div>
+    <div class="hero-title-fall" id="heroTitle">
+      <span class="hero-line">MOBILE</span>
+      <span class="hero-line">AUTO PAINT</span>
+      <span class="hero-line hero-line-red">REPAIR.</span>
+    </div>
+    <div class="hero-location">San Diego County, <span>CA</span></div>
+    <p class="hero-desc">Scratches, paint chips, scuffs, and faded paint — fixed at your home or office. No shop drop-off. No waiting. Factory finish, guaranteed.</p>
+    <div class="hero-actions">
+      <a href="#quote" class="btn-primary">&#128247; Get a Free Quote</a>
+      <a href="tel:+18589880325" class="btn-ghost">&#128222; (858) 988-0325</a>
+      <a href="sms:+18589880325" class="btn-sms">&#128172; Text Us Photos</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">500<span style="font-size:0.5em;vertical-align:super;color:var(--red)">+</span></div>
+        <div class="trust-label">Repairs<br/>Completed</div>
       </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step__num">1</div>
-          <h3>Send Photos</h3>
-          <p>Text or upload photos of the damage. We assess and send a firm price — no surprises.</p>
-        </div>
-        <div class="step">
-          <div class="step__num">2</div>
-          <h3>Confirm Price</h3>
-          <p>You approve the quote before we schedule anything. Clear, upfront pricing every time.</p>
-        </div>
-        <div class="step">
-          <div class="step__num">3</div>
-          <h3>We Come To You</h3>
-          <p>Pick a time — morning, afternoon, or weekend. Our tech arrives at your home or office.</p>
-        </div>
-        <div class="step">
-          <div class="step__num">4</div>
-          <h3>Drive Away Happy</h3>
-          <p>Most repairs take 1–3 hours. UV-cured clear coat means you can wash it in 24 hours.</p>
-        </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9</div>
+        <div class="trust-label">Star<br/>Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5</div>
+        <div class="trust-label">Years<br/>Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num" style="font-size:20px;padding-top:7px;">Same<br/>Day</div>
+        <div class="trust-label">Service<br/>Available</div>
       </div>
     </div>
-  </section>
-
-  <!-- GALLERY / RESULTS -->
-  <section class="section" id="gallery">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">Before &amp; After</span>
-        <h2>Real Results</h2>
-        <p>Every job done on-site. Real cars, real customers, real San Diego.</p>
-      </div>
-      <div class="gallery__grid">
-        <div class="job-card">
-          <div class="job-card__images">
-            <div class="job-card__before">Before</div>
-            <div class="job-card__after">After</div>
-          </div>
-          <div class="job-card__info">
-            <strong>Door Scratch</strong>
-            <span>Honda Civic &mdash; Pacific Beach</span>
-          </div>
-        </div>
-        <div class="job-card">
-          <div class="job-card__images">
-            <div class="job-card__before">Before</div>
-            <div class="job-card__after">After</div>
-          </div>
-          <div class="job-card__info">
-            <strong>Paint Chips</strong>
-            <span>Ford F-150 &mdash; Mission Valley</span>
-          </div>
-        </div>
-        <div class="job-card">
-          <div class="job-card__images">
-            <div class="job-card__before">Before</div>
-            <div class="job-card__after">After</div>
-          </div>
-          <div class="job-card__info">
-            <strong>Key Scratch</strong>
-            <span>BMW 3 Series &mdash; La Jolla</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section section--alt" id="pricing">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">Transparent Pricing</span>
-        <h2>Simple, Upfront Rates</h2>
-        <p>Price confirmed before we start. No hidden fees, no shop overhead.</p>
-      </div>
-      <div class="pricing__grid">
-        <div class="pricing-card">
-          <div class="pricing-card__tier">Light Repair</div>
-          <div class="pricing-card__price"><span>$</span>149<span class="suffix">+</span></div>
-          <p class="pricing-card__desc">Small chips, minor scuffs, spot touch-up</p>
-          <ul class="pricing-card__features">
-            <li>&#10003; Paint chip fill &amp; seal</li>
-            <li>&#10003; Spot color match</li>
-            <li>&#10003; UV clear coat</li>
-            <li>&#10003; Ready in 1–2 hrs</li>
-          </ul>
-          <a href="#quote" class="btn btn--outline-dark">Get a Quote</a>
-        </div>
-        <div class="pricing-card pricing-card--featured">
-          <div class="pricing-card__badge">Most Popular</div>
-          <div class="pricing-card__tier">Panel Repair</div>
-          <div class="pricing-card__price"><span>$</span>299<span class="suffix">+</span></div>
-          <p class="pricing-card__desc">Scratches, door dings, scuffs — full panel</p>
-          <ul class="pricing-card__features">
-            <li>&#10003; Sand &amp; prime</li>
-            <li>&#10003; Factory color match via VIN</li>
-            <li>&#10003; Full panel respray</li>
-            <li>&#10003; UV-cured clear coat</li>
-            <li>&#10003; 1-year guarantee</li>
-          </ul>
-          <a href="#quote" class="btn btn--primary">Get a Quote</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-card__tier">Full Respray</div>
-          <div class="pricing-card__price"><span>$</span>449<span class="suffix">+</span></div>
-          <p class="pricing-card__desc">Faded paint, large damage, multi-panel work</p>
-          <ul class="pricing-card__features">
-            <li>&#10003; Full surface prep</li>
-            <li>&#10003; Multi-panel blending</li>
-            <li>&#10003; Premium clear coat</li>
-            <li>&#10003; Paint correction included</li>
-            <li>&#10003; 1-year guarantee</li>
-          </ul>
-          <a href="#quote" class="btn btn--outline-dark">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPARISON TABLE -->
-  <section class="section" id="compare">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">Why Mobile</span>
-        <h2>Us vs. The Body Shop</h2>
-      </div>
-      <div class="compare__table">
-        <div class="compare__header">
-          <div></div>
-          <div class="compare__us">AutoPaint SD</div>
-          <div class="compare__them">Body Shop</div>
-        </div>
-        <div class="compare__row">
-          <div>We come to you</div>
-          <div class="yes">&#10003;</div>
-          <div class="no">&#10007;</div>
-        </div>
-        <div class="compare__row">
-          <div>Same-day availability</div>
-          <div class="yes">&#10003;</div>
-          <div class="no">&#10007;</div>
-        </div>
-        <div class="compare__row">
-          <div>Price confirmed upfront</div>
-          <div class="yes">&#10003;</div>
-          <div class="no">&#10007;</div>
-        </div>
-        <div class="compare__row">
-          <div>No rental car needed</div>
-          <div class="yes">&#10003;</div>
-          <div class="no">&#10007;</div>
-        </div>
-        <div class="compare__row">
-          <div>Typical turnaround</div>
-          <div class="yes">1–3 hrs</div>
-          <div class="no">3–7 days</div>
-        </div>
-        <div class="compare__row">
-          <div>Average cost savings</div>
-          <div class="yes">Up to 60% less</div>
-          <div class="no">Full shop rate</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICE AREA -->
-  <section class="section section--alt" id="area">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">Coverage</span>
-        <h2>We Serve All of San Diego County</h2>
-        <p>From the coast to the inland valleys — if you're in San Diego County, we come to you.</p>
-      </div>
-      <div class="area__zones">
-        <span class="zone">La Jolla</span>
-        <span class="zone">Pacific Beach</span>
-        <span class="zone">Ocean Beach</span>
-        <span class="zone">Mission Valley</span>
-        <span class="zone">Downtown SD</span>
-        <span class="zone">Chula Vista</span>
-        <span class="zone">El Cajon</span>
-        <span class="zone">Santee</span>
-        <span class="zone">Coronado</span>
-        <span class="zone">National City</span>
-        <span class="zone">Mira Mesa</span>
-        <span class="zone">Poway</span>
-        <span class="zone">Escondido</span>
-        <span class="zone">Vista</span>
-        <span class="zone">Carlsbad</span>
-        <span class="zone">Encinitas</span>
-        <span class="zone">Solana Beach</span>
-        <span class="zone">Del Mar</span>
-      </div>
-      <p class="area__note">Not sure if we cover your area? <a href="tel:+18589880325">Call us</a> — we'll let you know.</p>
-    </div>
-  </section>
-
-  <!-- REVIEWS -->
-  <section class="section" id="reviews">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">4.9 Stars &mdash; 47+ Reviews</span>
-        <h2>What Customers Say</h2>
-      </div>
-      <div class="reviews__grid">
-        <div class="review-card">
-          <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"They came to my driveway and fixed a nasty door scratch in under 2 hours. Paint match was dead-on. Way cheaper than any shop quote I got."</p>
-          <cite>&#8212; Marcus T., San Diego</cite>
-        </div>
-        <div class="review-card">
-          <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Sent a photo, got a quote the same hour, booked for next morning. Tech showed up on time and the chip repair is completely invisible. Incredible service."</p>
-          <cite>&#8212; Jennifer R., Chula Vista</cite>
-        </div>
-        <div class="review-card">
-          <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Used them for our dealership lot reconditioning. Fast, consistent quality, and they work around our schedule. Highly recommend for fleet work."</p>
-          <cite>&#8212; Dave S., Fleet Manager</cite>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section section--alt" id="faq">
-    <div class="container">
-      <div class="section__header">
-        <span class="label">FAQ</span>
-        <h2>Common Questions</h2>
-      </div>
-      <div class="faq__grid">
-        <div class="faq-item">
-          <button class="faq-item__q">How do I get a quote? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">Text or upload photos of the damage using the form below. We'll respond with a firm price within minutes during business hours — no estimate ranges, just a real number.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q">How long does a repair take? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">Most repairs take 1–3 hours on-site. Larger multi-panel jobs may take up to 4 hours. We'll give you a time estimate when we quote the job.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q">Will the color match exactly? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">Yes. We use your VIN to pull the factory color code and mix paint to exact spec. We also blend into adjacent panels so the repair is invisible under all lighting conditions.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q">Do I need to do anything to prepare? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">Just make sure the car is clean around the repair area and parked somewhere with reasonable access. We bring everything else — equipment, paint, curing lamps, the works.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q">What areas do you cover? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">We cover all of San Diego County — coast to inland. La Jolla, Pacific Beach, Chula Vista, El Cajon, Escondido, and everywhere in between. Call us if you're unsure about your location.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q">Is there a warranty? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">Yes — all Panel Repair and Full Respray work comes with a 1-year workmanship guarantee. If the repair fails due to our work, we'll fix it at no charge.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q">Can you work on any vehicle? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">We work on all makes and models — cars, trucks, SUVs, and vans. For exotic or matte-finish vehicles, mention that when requesting a quote so we can prepare appropriately.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q">Do you work with insurance? <span class="faq-chevron">&#9660;</span></button>
-          <div class="faq-item__a">We can provide documentation for insurance claims. Many customers choose to pay out of pocket to avoid a rate increase — our prices are often below the deductible anyway.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUOTE FORM -->
-  <section class="section section--dark" id="quote">
-    <div class="container">
-      <div class="quote__inner">
-        <div class="quote__text">
-          <span class="label label--light">Free Estimate</span>
-          <h2>Get Your Free Quote</h2>
-          <p>Send us photos and details — we respond within 2 hours during business hours with a firm price.</p>
-          <div class="quote__contact">
-            <a href="tel:+18589880325" class="contact-link">&#128222; (858) 988-0325</a>
-            <a href="sms:+18589880325" class="contact-link">&#128172; Text Us Photos</a>
-          </div>
-          <p class="quote__hours">Mon–Fri 7am–7pm &nbsp;|&nbsp; Sat–Sun 8am–5pm</p>
-        </div>
-        <form class="quote-form" id="quoteForm" novalidate>
-          <div class="form__row">
-            <div class="form__group">
-              <label for="name">Full Name *</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
-            </div>
-            <div class="form__group">
-              <label for="phone">Phone Number *</label>
-              <input type="tel" id="phone" name="phone" placeholder="(858) 555-0100" required />
-            </div>
-          </div>
-          <div class="form__row">
-            <div class="form__group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" placeholder="jane@email.com" required />
-            </div>
-            <div class="form__group">
-              <label for="zip">Zip Code *</label>
-              <input type="text" id="zip" name="zip" placeholder="92101" required />
-            </div>
-          </div>
-          <div class="form__row">
-            <div class="form__group">
-              <label for="vehicle">Vehicle (Year, Make, Model) *</label>
-              <input type="text" id="vehicle" name="vehicle" placeholder="2021 Toyota Camry" required />
-            </div>
-            <div class="form__group">
-              <label for="service">Service Needed *</label>
-              <select id="service" name="service" required>
-                <option value="">Select…</option>
-                <option>Paint Chip Repair</option>
-                <option>Scratch Removal</option>
-                <option>Touch-Up &amp; Blending</option>
-                <option>Door Ding Repair</option>
-                <option>Paint Correction</option>
-                <option>Fleet / Dealership</option>
-                <option>Not Sure — Need Assessment</option>
-              </select>
-            </div>
-          </div>
-          <div class="form__group">
-            <label for="description">Describe the Damage</label>
-            <textarea id="description" name="description" rows="4" placeholder="Where is the damage on the vehicle? How large? Any photos you can text to (858) 988-0325 help us quote faster."></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary btn--large">Send My Quote Request</button>
-          <p class="form__privacy">We never sell or share your info.</p>
-          <div class="form__success" id="formSuccess" hidden>
-            &#10003; Sent! We'll be in touch within 2 hours.
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="#home" class="footer__logo">AutoPaint<span class="accent">SD</span></a>
-        <p>Mobile auto paint repair serving all of San Diego County. We come to you.</p>
-        <p class="footer__hours">Mon–Fri 7am–7pm &nbsp;|&nbsp; Sat–Sun 8am–5pm</p>
-      </div>
-      <div class="footer__links">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">Paint Chip Repair</a></li>
-          <li><a href="#services">Scratch Removal</a></li>
-          <li><a href="#services">Touch-Up &amp; Blending</a></li>
-          <li><a href="#services">Door Ding Repair</a></li>
-          <li><a href="#services">Paint Correction</a></li>
-          <li><a href="#services">Fleet &amp; Dealership</a></li>
-        </ul>
-      </div>
-      <div class="footer__contact">
-        <h4>Contact</h4>
-        <p><a href="tel:+18589880325">&#128222; (858) 988-0325</a></p>
-        <p><a href="sms:+18589880325">&#128172; Text for Photos &amp; Quotes</a></p>
-        <p>&#128205; San Diego County, CA</p>
-        <a href="#quote" class="btn btn--primary" style="margin-top:16px;display:inline-block;">Free Quote</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p>&copy; 2026 AutoPaint SD. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- STICKY CTA BAR -->
-  <div class="sticky-bar" id="stickyBar">
-    <p>Ready to fix your paint? <strong>Same-day slots available.</strong></p>
-    <a href="#quote" class="btn btn--primary">Get a Free Quote</a>
-    <button class="sticky-bar__close" id="stickyClose">&#10005;</button>
   </div>
+  <div class="hero-right">
+    <div class="hero-map">
+      <div class="hero-map-placeholder">
+        <div class="map-pin-icon">&#128205;</div>
+        <p>SAN DIEGO COUNTY</p>
+        <span>We come to your location</span>
+      </div>
+    </div>
+    <div class="hero-service-bar">
+      <div class="hsb-item"><div class="hsb-icon">&#127775;</div><div class="hsb-label">Paint Chips</div></div>
+      <div class="hsb-item"><div class="hsb-icon">&#128295;</div><div class="hsb-label">Scratches</div></div>
+      <div class="hsb-item"><div class="hsb-icon">&#10024;</div><div class="hsb-label">Full Respray</div></div>
+    </div>
+  </div>
+</section>
 
-  <script src="app.js"></script>
+<!-- ── TRUST STRIP ── -->
+<div class="trust-strip">
+  <div class="ts-item"><span class="ts-icon">&#9989;</span> No Shop Drop-Off</div>
+  <div class="ts-item"><span class="ts-icon">&#9989;</span> <span class="ts-hl">Factory</span> Color Match via VIN</div>
+  <div class="ts-item"><span class="ts-icon">&#9989;</span> Price Locked Before We Start</div>
+  <div class="ts-item"><span class="ts-icon">&#9989;</span> UV-Cure Clear Coat</div>
+  <div class="ts-item"><span class="ts-icon">&#9989;</span> <span class="ts-hl">1-Year</span> Guarantee</div>
+  <div class="ts-item"><span class="ts-icon">&#9989;</span> Licensed &amp; Insured</div>
+</div>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="services-header" style="padding:0 48px;padding-top:88px;">
+    <div class="section-tag">What We Fix</div>
+    <h2 class="section-h">Our Services</h2>
+    <p class="section-p">Every repair done on-site at your location. No tow trucks, no rental cars, no waiting rooms.</p>
+  </div>
+  <div class="services-grid reveal" style="margin-top:40px;">
+    <div class="service-card">
+      <div class="sc-icon">&#127775;</div>
+      <div class="sc-title">Paint Chip Repair</div>
+      <p class="sc-desc">Rock chips and road debris leave bare-metal spots that rust fast. We fill, prime, and color-match so they vanish completely.</p>
+      <div class="sc-time">Typical: 1–2 hrs &nbsp;·&nbsp; From $149</div>
+      <div class="sc-num">01</div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">&#128295;</div>
+      <div class="sc-title">Scratch Removal</div>
+      <p class="sc-desc">Key scratches, parking lot scuffs — we sand, prime, and repaint the panel. Invisible results, backed by our guarantee.</p>
+      <div class="sc-time">Typical: 2–3 hrs &nbsp;·&nbsp; From $199</div>
+      <div class="sc-num">02</div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">&#10024;</div>
+      <div class="sc-title">Touch-Up &amp; Blending</div>
+      <p class="sc-desc">Full panel color-matching and edge blending so the repair disappears under any lighting condition. No obvious repair lines.</p>
+      <div class="sc-time">Typical: 2–3 hrs &nbsp;·&nbsp; From $249</div>
+      <div class="sc-num">03</div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">&#128663;</div>
+      <div class="sc-title">Door Ding Repair</div>
+      <p class="sc-desc">Parking-lot door dings removed and painted without the cost of a full panel respray. Clean, fast, on-site.</p>
+      <div class="sc-time">Typical: 1.5–2 hrs &nbsp;·&nbsp; From $169</div>
+      <div class="sc-num">04</div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">&#128165;</div>
+      <div class="sc-title">Paint Correction</div>
+      <p class="sc-desc">Oxidized, faded, or swirl-marked paint restored to a deep glossy factory finish on-site. Single or multi-panel available.</p>
+      <div class="sc-time">Typical: 2–4 hrs &nbsp;·&nbsp; From $299</div>
+      <div class="sc-num">05</div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">&#127973;</div>
+      <div class="sc-title">Fleet &amp; Dealership</div>
+      <p class="sc-desc">High-volume reconditioning on your lot, on your schedule. Consistent quality, flexible pricing for fleet operators.</p>
+      <div class="sc-time">On your lot &nbsp;·&nbsp; Call for rates</div>
+      <div class="sc-num">06</div>
+    </div>
+  </div>
+</section>
+
+<!-- Inline CTA -->
+<div class="inline-cta">
+  <div>
+    <div class="inline-cta-text">Ready to fix your paint? <span>Same-day slots open.</span></div>
+    <div class="inline-cta-sub">Text us a photo and get a firm quote in minutes.</div>
+  </div>
+  <a href="#quote" class="btn-sm">&#128247; Get My Free Quote</a>
+</div>
+
+<!-- ── HOW IT WORKS ── -->
+<section id="how">
+  <div class="how-header">
+    <div class="section-tag">Simple Process</div>
+    <h2 class="section-h">How It Works</h2>
+    <p class="section-p">Four steps from photo to perfect finish — all without leaving your driveway.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-step reveal">
+      <div class="how-num">1</div>
+      <div class="how-title">Send Photos</div>
+      <p class="how-desc">Text or upload photos of the damage. We assess it and send a firm, itemized price — no estimate ranges, no surprises.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num">2</div>
+      <div class="how-title">Confirm Price</div>
+      <p class="how-desc">You approve the quote before we schedule anything. Clear, upfront pricing every single time. No shop games.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num">3</div>
+      <div class="how-title">We Come To You</div>
+      <p class="how-desc">Pick a time — morning, afternoon, or weekend. Our tech arrives at your home, office, or anywhere in San Diego County.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num">4</div>
+      <div class="how-title">Drive Away Happy</div>
+      <p class="how-desc">Most repairs take 1–3 hours. UV-cured clear coat means you can wash it in 24 hours. 1-year workmanship guarantee included.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESULTS ── -->
+<section id="results">
+  <div class="section-tag">Before &amp; After</div>
+  <h2 class="section-h">Real Results</h2>
+  <p class="section-p" style="margin-bottom:40px;">Every job done on-site. Real cars, real customers, real San Diego.</p>
+  <div class="results-stats">
+    <div class="rs-stat"><div class="rs-num">500<span class="rs-suffix">+</span></div><div class="rs-label">Paint Repairs<br/>Completed</div></div>
+    <div class="rs-divider"></div>
+    <div class="rs-stat"><div class="rs-num">4.9<span class="rs-suffix">★</span></div><div class="rs-label">Average<br/>Rating</div></div>
+    <div class="rs-divider"></div>
+    <div class="rs-stat"><div class="rs-num">5</div><div class="rs-label">Years Mobile<br/>Experience</div></div>
+    <div class="rs-divider"></div>
+    <div class="rs-stat"><div class="rs-num">1<span class="rs-suffix">yr</span></div><div class="rs-label">Workmanship<br/>Guarantee</div></div>
+    <div class="rs-divider"></div>
+    <div class="rs-stat"><div class="rs-num" style="font-size:clamp(28px,3.5vw,48px);padding-top:10px;">Same Day</div><div class="rs-label">Service<br/>Available</div></div>
+  </div>
+  <div class="rj-grid">
+    <div class="rj-card reveal">
+      <div class="rj-photo"><div class="rj-photo-icon">&#128247;</div><div class="rj-photo-txt">Before / After Photo</div></div>
+      <div class="rj-body">
+        <div class="rj-tag">Scratch Removal</div>
+        <div class="rj-title">Deep Key Scratch</div>
+        <div class="rj-meta">Honda Civic · La Jolla &nbsp;·&nbsp; <span class="rj-time">2 hrs on-site</span></div>
+        <div class="rj-saved">Shop quote <s>$620</s> → <strong>Saved ~$320</strong></div>
+      </div>
+    </div>
+    <div class="rj-card reveal">
+      <div class="rj-photo"><div class="rj-photo-icon">&#128247;</div><div class="rj-photo-txt">Before / After Photo</div></div>
+      <div class="rj-body">
+        <div class="rj-tag">Paint Chip Repair</div>
+        <div class="rj-title">Hood & Roof Chips</div>
+        <div class="rj-meta">Toyota Tacoma · Mission Valley &nbsp;·&nbsp; <span class="rj-time">1.5 hrs on-site</span></div>
+        <div class="rj-saved">Shop quote <s>$480</s> → <strong>Saved ~$230</strong></div>
+      </div>
+    </div>
+    <div class="rj-card reveal">
+      <div class="rj-photo"><div class="rj-photo-icon">&#128247;</div><div class="rj-photo-txt">Before / After Photo</div></div>
+      <div class="rj-body">
+        <div class="rj-tag">Full Panel Respray</div>
+        <div class="rj-title">Door Panel Color Blend</div>
+        <div class="rj-meta">BMW 3 Series · Pacific Beach &nbsp;·&nbsp; <span class="rj-time">3 hrs on-site</span></div>
+        <div class="rj-saved">Shop quote <s>$1,100</s> → <strong>Saved ~$550</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section id="pricing">
+  <div class="pricing-header">
+    <div>
+      <div class="section-tag">Transparent Pricing</div>
+      <h2 class="section-h">Simple, Upfront Rates</h2>
+    </div>
+    <div class="pricing-note">Price confirmed before we start. No hidden fees, no shop overhead passed to you.</div>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="pc-type">Starter</div>
+      <div class="pc-name">Light Repair</div>
+      <div class="pc-dealer">Shop price: <s>$350–$500</s></div>
+      <div class="pc-saving">Save up to 60%</div>
+      <div class="pc-price">$149</div>
+      <div class="pc-from">starting price · confirmed before work</div>
+      <ul class="pc-features">
+        <li>Paint chip fill &amp; seal</li>
+        <li>Spot color match</li>
+        <li>UV-cure clear coat</li>
+        <li>Ready in 1–2 hrs</li>
+        <li>Mobile, we come to you</li>
+      </ul>
+      <a href="#quote" class="pc-btn pc-btn-outline">Get a Quote</a>
+    </div>
+    <div class="price-card popular reveal">
+      <div class="popular-tag">Most Popular</div>
+      <div class="pc-type">Best Value</div>
+      <div class="pc-name">Panel Repair</div>
+      <div class="pc-dealer">Shop price: <s>$700–$1,200</s></div>
+      <div class="pc-saving">Save up to 65%</div>
+      <div class="pc-price">$299</div>
+      <div class="pc-from">starting price · firm quote upfront</div>
+      <ul class="pc-features">
+        <li>Sand, prime &amp; prep</li>
+        <li>Factory color match via VIN</li>
+        <li>Full panel respray</li>
+        <li>UV-cured clear coat</li>
+        <li>Edge blending — invisible repair</li>
+        <li>1-year workmanship guarantee</li>
+      </ul>
+      <a href="#quote" class="pc-btn pc-btn-fill">Get a Quote</a>
+    </div>
+    <div class="price-card reveal">
+      <div class="pc-type">Premium</div>
+      <div class="pc-name">Full Respray</div>
+      <div class="pc-dealer">Shop price: <s>$1,200–$2,000</s></div>
+      <div class="pc-saving">Save up to 65%</div>
+      <div class="pc-price">$449</div>
+      <div class="pc-from">starting price · multi-panel jobs</div>
+      <ul class="pc-features">
+        <li>Full surface prep &amp; masking</li>
+        <li>Multi-panel color blending</li>
+        <li>Premium UV clear coat</li>
+        <li>Paint correction included</li>
+        <li>Faded &amp; oxidized paint restored</li>
+        <li>1-year workmanship guarantee</li>
+      </ul>
+      <a href="#quote" class="pc-btn pc-btn-outline">Get a Quote</a>
+    </div>
+  </div>
+  <div class="guarantee-badge">
+    <div class="gb-icon">&#128737;</div>
+    <div>
+      <div class="gb-title">1-Year Workmanship Guarantee</div>
+      <div class="gb-sub">If the repair fails due to our work, we fix it at no charge. Panel Repair &amp; Full Respray included.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARE ── -->
+<section id="compare">
+  <div class="compare-header">
+    <div class="section-tag">Why Mobile</div>
+    <h2 class="section-h">Us vs. The Body Shop</h2>
+    <p class="section-p">The math is simple. No shop overhead, no inflated labor rates, no markup on parts.</p>
+  </div>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="shop-col">Body Shop</th>
+        <th class="bf-col">AutoPaint SD<span class="bf-badge">Mobile · We Come To You</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>We come to you</td><td class="shop-val c-bad">&#10007; You bring it in</td><td class="bf-val c-good">&#10003; Always</td></tr>
+      <tr><td>Same-day availability</td><td class="shop-val c-bad">&#10007; 3–7 day wait</td><td class="bf-val c-good">&#10003; Usually available</td></tr>
+      <tr><td>Price confirmed upfront</td><td class="shop-val c-bad">&#10007; Estimate only</td><td class="bf-val c-good">&#10003; Firm quote every time</td></tr>
+      <tr><td>Rental car needed</td><td class="shop-val c-bad">&#10003; Often yes</td><td class="bf-val c-good">&#10007; Never</td></tr>
+      <tr><td>Factory color match</td><td class="shop-val">&#10003; Yes</td><td class="bf-val c-good">&#10003; Via VIN lookup</td></tr>
+      <tr><td>Typical turnaround</td><td class="shop-val c-bad">3–7 days</td><td class="bf-val c-good">1–3 hours</td></tr>
+      <tr><td>Average cost vs. shop</td><td class="shop-val c-bad">Full shop rate</td><td class="bf-val c-good">Up to 65% less</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="faq-nudge">
+  <div class="faq-nudge-text">Still have questions? <strong>We've answered the most common ones below.</strong></div>
+  <a href="#faq" class="faq-nudge-link">View FAQ →</a>
+</div>
+
+<!-- ── SERVICE AREA ── -->
+<section id="area">
+  <div class="area-header">
+    <div>
+      <div class="section-tag">Coverage</div>
+      <h2 class="section-h">All of San Diego County</h2>
+      <p class="section-p">From the coast to the inland valleys — if you're in San Diego County, we come to you.</p>
+    </div>
+    <div class="area-stats">
+      <div class="area-stat"><div class="area-stat-num">500+</div><div class="area-stat-label">Repairs Done</div></div>
+      <div class="area-stat"><div class="area-stat-num">18+</div><div class="area-stat-label">Zones Served</div></div>
+      <div class="area-stat"><div class="area-stat-num">5 Yrs</div><div class="area-stat-label">Experience</div></div>
+    </div>
+  </div>
+  <div class="area-chips-wrap">
+    <div class="chips-label">Areas We Cover</div>
+    <div class="chips-row">
+      <div class="bf-chip">La Jolla</div>
+      <div class="bf-chip">Pacific Beach</div>
+      <div class="bf-chip">Ocean Beach</div>
+      <div class="bf-chip">Mission Valley</div>
+      <div class="bf-chip">Downtown San Diego</div>
+      <div class="bf-chip">Chula Vista</div>
+      <div class="bf-chip">El Cajon</div>
+      <div class="bf-chip">Santee</div>
+      <div class="bf-chip">Coronado</div>
+      <div class="bf-chip">National City</div>
+      <div class="bf-chip">Mira Mesa</div>
+      <div class="bf-chip">Poway</div>
+      <div class="bf-chip">Escondido</div>
+      <div class="bf-chip">Vista</div>
+      <div class="bf-chip">Carlsbad</div>
+      <div class="bf-chip">Encinitas</div>
+      <div class="bf-chip">Solana Beach</div>
+      <div class="bf-chip">Del Mar</div>
+      <div class="bf-chip">Rancho Bernardo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section id="reviews">
+  <div class="reviews-top">
+    <div>
+      <div class="section-tag">Customer Reviews</div>
+      <h2 class="section-h">What People Say</h2>
+    </div>
+    <div>
+      <div class="reviews-score">4.9</div>
+      <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="reviews-count">Based on 47+ verified reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"They came to my office parking lot and fixed a deep key scratch in under 2 hours. Paint match was dead-on — you can't find where it was. Way cheaper than the dealer quoted me."</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div><div class="review-name">Marcus T.</div><div class="review-car">Honda Civic · La Jolla</div></div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Sent a photo at 8am, got a quote within the hour, booked for next morning. The tech showed up on time and fixed three paint chips on my hood. Completely invisible. Incredible."</p>
+      <div class="review-author">
+        <div class="review-avatar">J</div>
+        <div><div class="review-name">Jennifer R.</div><div class="review-car">Toyota Camry · Chula Vista</div></div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Used them for our dealership lot reconditioning — paint touch-ups, scratch repair, the works. Fast, consistent quality. They work around our schedule. Our go-to mobile vendor now."</p>
+      <div class="review-author">
+        <div class="review-avatar">D</div>
+        <div><div class="review-name">Dave S.</div><div class="review-car">Fleet Manager · Mission Valley</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="faq-header">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-h" style="color:#111;">Common Questions</h2>
+    <p class="section-p" style="color:#555;">Everything you need to know before booking.</p>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-question">How do I get a quote? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">Text or upload photos of the damage using the form below. We'll respond with a firm price within minutes during business hours — no estimate ranges, just a real number you can count on.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How long does a repair take? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">Most repairs take 1–3 hours on-site. Larger multi-panel jobs may take up to 4 hours. We'll give you a time estimate when we quote the job so you can plan accordingly.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Will the color match exactly? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">Yes. We use your VIN to pull the factory color code and mix paint to exact spec. We also blend into adjacent panels so the repair is invisible under all lighting conditions — sunlight, overhead lights, everything.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do I need to do anything to prepare? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">Just make sure the car is clean around the repair area and parked somewhere with reasonable access. We bring everything else — spray equipment, OEM-matched paint, UV curing lamps, masking materials.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What areas do you cover? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">We cover all of San Diego County — coast to inland. La Jolla, Pacific Beach, Chula Vista, El Cajon, Escondido, and everywhere in between. Call us if you're unsure about your specific location.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Is there a warranty? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">Yes — all Panel Repair and Full Respray work comes with a 1-year workmanship guarantee. If the repair fails due to our work, we'll come back and fix it at no charge.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can you work on any vehicle? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">We work on all makes and models — cars, trucks, SUVs, and vans. For exotic or matte-finish vehicles, mention that when requesting a quote so we can prepare the right materials.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do you work with insurance? <span class="faq-chevron">+</span></button>
+      <div class="faq-answer">We can provide documentation for insurance claims. Many customers choose to pay out of pocket to avoid a rate increase — our prices are often below the deductible anyway.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE ── -->
+<section id="quote">
+  <div class="quote-inner">
+    <div>
+      <div class="quote-title">GET YOUR<br/>FREE<br/>QUOTE.</div>
+      <p class="quote-desc">Send us photos of the damage and we'll respond with a firm price within 2 hours during business hours. No obligation, no pressure.</p>
+      <div style="margin-top:28px;">
+        <a href="tel:+18589880325" style="display:block;font-family:'Anton',sans-serif;font-size:26px;color:white;text-decoration:none;margin-bottom:12px;">&#128222; (858) 988-0325</a>
+        <a href="sms:+18589880325" style="display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#4ADE80;font-size:15px;text-decoration:none;">&#128172; Text Us Photos Directly</a>
+      </div>
+      <div style="margin-top:20px;font-size:13px;color:rgba(255,255,255,0.5);">Mon–Fri 7am–7pm &nbsp;·&nbsp; Sat–Sun 8am–5pm</div>
+    </div>
+    <div class="quote-form">
+      <div class="qf-title">Free Paint Repair Quote</div>
+      <div class="qf-sub">Response within 2 hours · No obligation</div>
+      <div class="scarcity-badge">
+        <span class="sc-dot"></span>
+        <span class="sc-text"><span id="scarcityText">3 spots</span> available this week — book early</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-open" id="hoursStatus"><span class="hours-dot"></span> <span id="hoursText">Open Now</span></span>
+        <span>We respond within 2 hours</span>
+      </div>
+      <div class="qf-row">
+        <input class="qf-input" id="qf-name" type="text" placeholder="Full Name *" />
+        <input class="qf-input" id="qf-phone" type="tel" placeholder="Phone Number *" />
+      </div>
+      <div class="qf-row">
+        <input class="qf-input" id="qf-email" type="email" placeholder="Email Address" />
+        <input class="qf-input" id="qf-zip" type="text" placeholder="Zip Code" />
+      </div>
+      <input class="qf-input" id="qf-vehicle" type="text" placeholder="Vehicle (Year, Make, Model) *" style="margin-bottom:10px;" />
+      <select class="qf-select" id="qf-service">
+        <option value="">Select service needed…</option>
+        <option value="chip">Paint Chip Repair</option>
+        <option value="scratch">Scratch Removal</option>
+        <option value="touchup">Touch-Up &amp; Blending</option>
+        <option value="ding">Door Ding Repair</option>
+        <option value="correction">Paint Correction</option>
+        <option value="fleet">Fleet / Dealership</option>
+        <option value="unsure">Not Sure — Need Assessment</option>
+      </select>
+      <div class="qf-hint">&#128247; You can also text photos to (858) 988-0325 for faster quoting</div>
+      <button class="qf-btn" id="qfBtn">GET MY FREE QUOTE →</button>
+      <div class="form-trust">
+        <span class="ft-item">&#9989; No spam ever</span>
+        <span class="ft-item">&#9989; Price confirmed before work</span>
+        <span class="ft-item">&#9989; No obligation</span>
+      </div>
+      <a href="sms:+18589880325" class="form-sms-link">&#128172; Or text photos to (858) 988-0325</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-row">
+        <span class="footer-brand-name">AutoPaint<span>SD</span></span>
+      </div>
+      <p class="footer-tagline">Mobile auto paint repair, scratch removal, and cosmetic touch-up — we come to you across all of San Diego County.</p>
+      <a href="tel:+18589880325" class="footer-phone">(858) 988-0325</a>
+      <div class="footer-hours">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9 &nbsp;·&nbsp; 47+ reviews</div>
+      <div class="referral-strip">
+        <span class="referral-icon">&#127873;</span>
+        <span class="referral-text">Refer a friend and <strong>earn $100</strong> when they book a repair</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Paint Chip Repair</a></li>
+        <li><a href="#services">Scratch Removal</a></li>
+        <li><a href="#services">Touch-Up &amp; Blending</a></li>
+        <li><a href="#services">Door Ding Repair</a></li>
+        <li><a href="#services">Paint Correction</a></li>
+        <li><a href="#services">Fleet &amp; Dealership</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Service Area</div>
+      <ul class="footer-links">
+        <li><a href="#area">San Diego County</a></li>
+        <li><a href="#area">La Jolla</a></li>
+        <li><a href="#area">Chula Vista</a></li>
+        <li><a href="#area">El Cajon</a></li>
+        <li><a href="#area">Mission Valley</a></li>
+        <li><a href="#area">Pacific Beach</a></li>
+        <li><a href="#area">Coronado</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#quote">Get a Quote</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="tel:+18589880325">Call Us</a></li>
+        <li><a href="sms:+18589880325">Text Us Photos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 AutoPaint SD. All rights reserved. San Diego, CA. Mobile auto paint repair service.</p>
+    <p>Mon–Fri 7am–7pm &nbsp;·&nbsp; Sat–Sun 8am–5pm</p>
+  </div>
+</footer>
+
+<!-- ── STICKY CTA BAR ── -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-left">
+    <div>
+      <div class="sticky-brand">AutoPaint SD</div>
+      <div class="sticky-tagline">Mobile paint repair · San Diego County</div>
+    </div>
+  </div>
+  <div class="sticky-actions">
+    <a href="tel:+18589880325" class="sticky-phone">(858) 988-0325</a>
+    <a href="#quote" class="sticky-btn">Get a Free Quote</a>
+    <button class="sticky-close" id="stickyClose">&#10005;</button>
+  </div>
+</div>
+
+<!-- ── WHATSAPP ── -->
+<a href="https://wa.me/18589880325" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  &#128172;
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+</a>
+
+<!-- ── EXIT INTENT ── -->
+<div class="exit-overlay" id="exitOverlay">
+  <div class="exit-modal">
+    <button class="exit-close" id="exitClose">&#10005;</button>
+    <div class="exit-icon">&#127775;</div>
+    <div class="exit-title">Before You Go —<br/><span>Get a Free Quote</span></div>
+    <p class="exit-sub">Most repairs cost far less than a shop estimate. Drop your number and we'll send you a firm price in minutes — no obligation.</p>
+    <div class="exit-form">
+      <input class="exit-input" id="exitPhone" type="tel" placeholder="Your phone number" />
+      <button class="exit-submit" id="exitSubmit">TEXT ME</button>
+    </div>
+    <div class="exit-note">We'll only text you once with your quote. No spam.</div>
+    <button class="exit-dismiss" id="exitDismiss">No thanks, I'll pay full shop price</button>
+  </div>
+</div>
+
+<script>
+// ── HERO LINE DROP ──
+(function () {
+  const title = document.getElementById('heroTitle');
+  if (!title) return;
+  title.querySelectorAll('.hero-line').forEach((line, i) => {
+    line.style.animationDelay = (i * 0.22) + 's';
+  });
+  requestAnimationFrame(() => title.classList.add('is-animating'));
+})();
+
+// ── HAMBURGER ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// ── SCROLL BEHAVIORS ──
+const topbar   = document.querySelector('.topbar');
+const availBar = document.getElementById('availBar');
+const stickyCta = document.getElementById('stickyCta');
+let stickyDismissed = false;
+
+const hr = new Date().getHours();
+const slotsEl = document.getElementById('availSlots');
+if (slotsEl) {
+  if (hr >= 7 && hr < 12)       slotsEl.innerHTML = '&#9889; <strong>3 spots</strong> open this morning';
+  else if (hr >= 12 && hr < 16) slotsEl.innerHTML = '&#9889; <strong>2 spots</strong> left this afternoon';
+  else if (hr >= 16 && hr < 20) slotsEl.innerHTML = '&#9889; <strong>1 spot</strong> left today';
+  else                           slotsEl.innerHTML = '&#9889; Booking for tomorrow';
+}
+
+// Scarcity text
+const scarcityEl = document.getElementById('scarcityText');
+if (scarcityEl) {
+  if (hr >= 7 && hr < 12)       scarcityEl.textContent = '3 spots';
+  else if (hr >= 12 && hr < 16) scarcityEl.textContent = '2 spots';
+  else if (hr >= 16 && hr < 20) scarcityEl.textContent = '1 spot';
+  else                           scarcityEl.textContent = 'Limited spots';
+}
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > 120) {
+    topbar.classList.add('hidden');
+    availBar.classList.add('visible');
+  } else {
+    topbar.classList.remove('hidden');
+    availBar.classList.remove('visible');
+  }
+  if (!stickyDismissed && y > window.innerHeight * 0.7)
+    stickyCta.classList.add('visible');
+  else if (y < 200)
+    stickyCta.classList.remove('visible');
+}, { passive: true });
+
+document.getElementById('stickyClose').addEventListener('click', () => {
+  stickyDismissed = true;
+  stickyCta.classList.remove('visible');
+});
+
+// ── HOURS STATUS ──
+(function() {
+  const day = new Date().getDay();
+  const isWknd = day === 0 || day === 6;
+  const open = isWknd ? (hr >= 8 && hr < 17) : (hr >= 7 && hr < 19);
+  const hoursText = document.getElementById('hoursText');
+  const hoursStatus = document.getElementById('hoursStatus');
+  if (hoursText) hoursText.textContent = open ? 'Open Now' : 'Currently Closed';
+  if (!open && hoursStatus) hoursStatus.classList.add('closed');
+})();
+
+// ── URL PRESELECT ──
+const urlP = new URLSearchParams(window.location.search);
+if (urlP.get('service')) {
+  const sel = document.getElementById('qf-service');
+  if (sel) sel.value = urlP.get('service');
+}
+
+// ── QUOTE FORM ──
+document.getElementById('qfBtn').addEventListener('click', () => {
+  const name  = document.getElementById('qf-name').value;
+  const phone = document.getElementById('qf-phone').value;
+  document.getElementById('qf-name').style.borderColor  = name ? '' : '#D92626';
+  document.getElementById('qf-phone').style.borderColor = phone.length >= 7 ? '' : '#D92626';
+  if (!name || phone.length < 7) return;
+  const btn = document.getElementById('qfBtn');
+  btn.textContent = '✅ QUOTE REQUEST SENT!';
+  btn.disabled = true;
+});
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-question').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      btn.nextElementSibling.classList.add('open');
+    }
+  });
+});
+
+// ── SCROLL REVEAL ──
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const siblings = Array.from(entry.target.parentNode.children);
+      setTimeout(() => entry.target.classList.add('visible'), (siblings.indexOf(entry.target) % 4) * 80);
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── EXIT INTENT ──
+let exitShown = false;
+document.addEventListener('mouseleave', function(e) {
+  if (e.clientY < 20 && !exitShown) {
+    exitShown = true;
+    document.getElementById('exitOverlay').classList.add('show');
+  }
+});
+['exitClose','exitDismiss'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', () => document.getElementById('exitOverlay').classList.remove('show'));
+});
+document.getElementById('exitSubmit').addEventListener('click', () => {
+  const phone = document.getElementById('exitPhone').value;
+  if (phone.length >= 7) {
+    document.getElementById('exitSubmit').textContent = '✅ SENT!';
+    document.getElementById('exitSubmit').disabled = true;
+    setTimeout(() => document.getElementById('exitOverlay').classList.remove('show'), 1500);
+  }
+});
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+  });
+});
+</script>
 </body>
 </html>
