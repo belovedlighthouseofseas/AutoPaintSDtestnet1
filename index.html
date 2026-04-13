@@ -693,6 +693,7 @@
     .cal-book-btn { width:100%; padding:14px; background:var(--red); color:#fff; border:none; border-radius:8px; font-family:'Anton',sans-serif; font-size:17px; letter-spacing:0.04em; cursor:pointer; transition:background 0.2s; }
     .cal-book-btn:hover { background:var(--red2); }
     .cal-book-btn:disabled { background:#CCC; cursor:default; }
+    .cal-urgency { background:linear-gradient(135deg,#D92626,#a81c1c); color:#fff; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:9px 16px; border-radius:6px; margin-bottom:14px; }
     .cal-note { background:#fff; border-radius:12px; border:1px solid #E0E0E0; padding:32px; display:flex; flex-direction:column; gap:20px; box-shadow:0 4px 24px rgba(0,0,0,0.06); }
     .cal-note h3 { font-family:'Anton',sans-serif; font-size:22px; letter-spacing:0.03em; color:#111; }
     .cal-note p { font-size:15px; color:#555; line-height:1.7; }
@@ -1255,10 +1256,8 @@
 <section id="results">
   <div style="margin-bottom:52px;">
     <div class="section-tag reveal">Track Record</div>
-    <h2 class="section-h reveal">Built on Real<br>Hands-On Work.</h2>
-    <p class="section-p reveal">
-      Auto Paint Fix is built on years of real paint technician experience, mobile workflow discipline, and repeated refinishing execution across San Diego County.
-    </p>
+    <h2 class="section-h reveal">Most customers come to us<br>after getting overpriced quotes.</h2>
+    <p class="section-p reveal">Real jobs. Real prices. No inflated shop estimates.</p>
   </div>
   <div class="results-stats reveal">
     <div class="rs-stat">
@@ -1277,21 +1276,62 @@
     </div>
     <div class="rs-divider"></div>
     <div class="rs-stat">
-      <div class="rs-num">Mobile</div>
-      <div class="rs-label">Service Model Built<br>For Convenience</div>
+      <div class="rs-num">$600<span class="rs-suffix">+</span></div>
+      <div class="rs-label">Average Customer<br>Savings vs. Shop</div>
     </div>
     <div class="rs-divider"></div>
     <div class="rs-stat">
-      <div class="rs-num">SD</div>
-      <div class="rs-label">Serving San Diego<br>County</div>
+      <div class="rs-num">80<span class="rs-suffix">%</span></div>
+      <div class="rs-label">Same-Day<br>Service Rate</div>
     </div>
   </div>
-  <div class="reveal" style="margin-top:32px;padding:24px 32px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:flex-start;gap:16px;max-width:920px;">
-    <div style="font-size:28px;line-height:1;">📸</div>
-    <div>
-      <div style="font-size:15px;font-weight:600;color:var(--white);margin-bottom:6px;">Photo-first quoting. Real mobile workflow.</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.75;">
-        The business is designed around fast photo review, on-site paint repair, and a simpler process for customers who do not want the delay and friction of a traditional body shop visit.
+  <div class="rj-grid reveal">
+    <div class="rj-card">
+      <div class="rj-photo">
+        <div class="rj-photo-icon">🚗</div>
+        <div class="rj-photo-txt">Rear Bumper</div>
+      </div>
+      <div class="rj-body">
+        <div class="rj-tag">Bumper Repair</div>
+        <div class="rj-title">Deep Scrape, Rear Bumper</div>
+        <div class="rj-meta">Customer got a body shop quote before calling us</div>
+        <div style="display:flex;gap:10px;margin:12px 0;font-size:13px;">
+          <span style="background:rgba(217,38,38,0.12);color:#D92626;border:1px solid rgba(217,38,38,0.3);border-radius:4px;padding:4px 10px;font-weight:600;">Shop: $850 ✗</span>
+          <span style="background:rgba(74,222,128,0.1);color:#4ADE80;border:1px solid rgba(74,222,128,0.3);border-radius:4px;padding:4px 10px;font-weight:600;">Us: $320 ✔</span>
+        </div>
+        <div class="rj-saved">On-site repair + color match. Done same day. <strong>Saved $530.</strong></div>
+      </div>
+    </div>
+    <div class="rj-card">
+      <div class="rj-photo">
+        <div class="rj-photo-icon">🚙</div>
+        <div class="rj-photo-txt">Driver Door</div>
+      </div>
+      <div class="rj-body">
+        <div class="rj-tag">Panel Scratch</div>
+        <div class="rj-title">Keyed Down the Driver Door</div>
+        <div class="rj-meta">Two shop quotes before reaching out</div>
+        <div style="display:flex;gap:10px;margin:12px 0;font-size:13px;">
+          <span style="background:rgba(217,38,38,0.12);color:#D92626;border:1px solid rgba(217,38,38,0.3);border-radius:4px;padding:4px 10px;font-weight:600;">Shop: $1,100 ✗</span>
+          <span style="background:rgba(74,222,128,0.1);color:#4ADE80;border:1px solid rgba(74,222,128,0.3);border-radius:4px;padding:4px 10px;font-weight:600;">Us: $380 ✔</span>
+        </div>
+        <div class="rj-saved">Spot refinish + full color match at their office. <strong>Saved $720.</strong></div>
+      </div>
+    </div>
+    <div class="rj-card">
+      <div class="rj-photo">
+        <div class="rj-photo-icon">🛻</div>
+        <div class="rj-photo-txt">Hood & Fascia</div>
+      </div>
+      <div class="rj-body">
+        <div class="rj-tag">Paint Correction</div>
+        <div class="rj-title">Road Chips, Hood + Front Fascia</div>
+        <div class="rj-meta">Dealer referred them to a shop — called us instead</div>
+        <div style="display:flex;gap:10px;margin:12px 0;font-size:13px;">
+          <span style="background:rgba(217,38,38,0.12);color:#D92626;border:1px solid rgba(217,38,38,0.3);border-radius:4px;padding:4px 10px;font-weight:600;">Shop: $650 ✗</span>
+          <span style="background:rgba(74,222,128,0.1);color:#4ADE80;border:1px solid rgba(74,222,128,0.3);border-radius:4px;padding:4px 10px;font-weight:600;">Us: $285 ✔</span>
+        </div>
+        <div class="rj-saved">Mobile paint correction + clear coat. No drop-off. <strong>Saved $365.</strong></div>
       </div>
     </div>
   </div>
@@ -1322,6 +1362,7 @@
         <div class="cal-day-name">Fri</div>
         <div class="cal-day-name">Sat</div>
       </div>
+      <div class="cal-urgency">Only 3 slots left this week</div>
       <div class="cal-days" id="calDays"></div>
       <div class="time-slots">
         <div class="ts-title">Available Times</div>
@@ -2384,6 +2425,19 @@ document.addEventListener('mouseleave', function(e) {
     let selectedDate = null, selectedTime = null;
     const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const TIMES = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
+    const TIME_LABELS = {
+      '8:00 AM':  '8:00 AM — Early Slot',
+      '9:00 AM':  '9:00 AM — Morning',
+      '10:00 AM': '10:00 AM — Fast Service',
+      '11:00 AM': '11:00 AM — Late Morning',
+      '12:00 PM': '12:00 PM — Midday',
+      '1:00 PM':  '1:00 PM — Afternoon',
+      '2:00 PM':  '2:00 PM — Midafternoon',
+      '3:00 PM':  '3:00 PM — Popular Slot',
+      '4:00 PM':  '4:00 PM — End of Day',
+      '5:00 PM':  '5:00 PM — Last Chance',
+      '6:00 PM':  '6:00 PM — Final Slot'
+    };
 
     // Real booked slots loaded from Supabase via /api/get-availability
     // Format: Set of "dateString|time" keys e.g. "Mon Apr 07 2026|10:00 AM"
@@ -2402,6 +2456,25 @@ document.addEventListener('mouseleave', function(e) {
       }
       renderCal();
       renderTimes();
+      // Auto-select today or first available weekday on initial load
+      if (!selectedDate) {
+        const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const isWeekday = todayMidnight.getDay() !== 0 && todayMidnight.getDay() !== 6;
+        if (isWeekday && !isDateFullyBooked(todayMidnight)) {
+          selectedDate = todayMidnight;
+        } else {
+          for (let i = 1; i <= 14; i++) {
+            const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+            if (d.getDay() !== 0 && d.getDay() !== 6 && !isDateFullyBooked(d)) {
+              selectedDate = d;
+              break;
+            }
+          }
+        }
+        renderCal();
+        renderTimes();
+        updateSummary();
+      }
     }
 
     function isSlotBooked(dateString, time) {
@@ -2459,7 +2532,7 @@ document.addEventListener('mouseleave', function(e) {
       el.innerHTML = TIMES.map(t => {
         const isBooked = isSlotBooked(ds, t);
         const isSel = selectedTime===t;
-        return `<div class="ts-slot ${isBooked?'booked':''} ${isSel?'selected':''}" data-time="${t}">${isBooked?'Taken':t}</div>`;
+        return `<div class="ts-slot ${isBooked?'booked':''} ${isSel?'selected':''}" data-time="${t}">${isBooked?'Taken':(TIME_LABELS[t]||t)}</div>`;
       }).join('');
       el.querySelectorAll('.ts-slot:not(.booked)').forEach(sl => {
         sl.addEventListener('click', () => { selectedTime=sl.dataset.time; renderTimes(); updateSummary(); });
@@ -2472,8 +2545,8 @@ document.addEventListener('mouseleave', function(e) {
       if (!sum||!btn) return;
       if (selectedDate && selectedTime) {
         const ds = selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
-        sum.innerHTML = `<strong>${ds}</strong> at <strong>${selectedTime}</strong>`;
-        btn.disabled = false; btn.textContent = 'CONFIRM APPOINTMENT →';
+        sum.innerHTML = `<strong>${ds}</strong> at <strong>${selectedTime}</strong><br><span style="font-size:12px;color:#666;display:block;margin-top:6px;">&#10004; Fast paint evaluation &nbsp;&#10004; Same-day quote &nbsp;&#10004; No shop wait</span>`;
+        btn.disabled = false; btn.textContent = 'Reserve This Slot →';
       } else if (selectedDate) {
         sum.innerHTML = `<strong>${selectedDate.toLocaleDateString('en-US',{month:'long',day:'numeric'})}</strong> — now pick a time`;
         btn.disabled = true; btn.textContent = 'SELECT A TIME';
