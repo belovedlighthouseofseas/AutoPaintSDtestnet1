@@ -208,11 +208,11 @@
     .badge-pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.5)} }
     .hero h1 {
-      font-family: 'Anton', sans-serif; font-size: clamp(60px, 7.5vw, 108px);
+      font-family: 'Anton', sans-serif; font-size: clamp(38px, 5vw, 72px);
       line-height: 0.88; letter-spacing: 0.01em; color: var(--white); margin-bottom: 14px;
     }
     /* ── HERO LINE DROP ── */
-    .hero-title-fall { display:flex; flex-direction:column; gap:0; margin-bottom:14px; line-height:0.88; font-family:'Anton',sans-serif; font-size:clamp(60px,7.5vw,108px); letter-spacing:0.01em; overflow:hidden; }
+    .hero-title-fall { display:flex; flex-direction:column; gap:0; margin-bottom:14px; line-height:0.88; font-family:'Anton',sans-serif; font-size:clamp(38px,5vw,72px); letter-spacing:0.01em; overflow:hidden; }
     .hero-title-fall .hero-line { display:block; white-space:nowrap; opacity:0; transform:translateY(-200px) scaleY(0.7); transform-origin:top center; will-change:transform,opacity; }
     .hero-title-fall .hero-line-red { color:var(--red); -webkit-text-fill-color:var(--red); }
     .hero-title-fall.is-animating .hero-line { animation:heroLineDrop 0.78s cubic-bezier(0.12,0,0.2,1) forwards; }
