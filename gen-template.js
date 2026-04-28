@@ -9,6 +9,18 @@ const TEL = '+18589880325';
 const DOMAIN = 'https://www.autopaintsd.com';
 
 const CITIES = [
+  { slug: 'mira-mesa', name: 'Mira Mesa', zip: '92126', lat: 32.9116, lng: -117.1484,
+    region: 'North City', nearby: ['Scripps Ranch', 'Rancho Peñasquitos', 'Sorrento Valley'],
+    chips: ['Mira Mesa Boulevard', 'Sorrento Valley adjacent', 'Scripps Ranch', 'Rancho Peñasquitos', 'Carmel Mountain Ranch', 'Sabre Springs'],
+    blurb: 'On-site cosmetic auto body and paint repair in Mira Mesa and North City. We come to your home, driveway, or office parking — bumper repair, scratch removal, and paint correction without the shop wait.',
+    drivers: [
+      { icon:'🚧', t:'Car Scratch Repair', d:'Office park lot corners, HOA garage pillars, and tight tech-campus parking produce constant side scrapes — we fix them on-site where the car sits.' },
+      { icon:'🔨', t:'Dent Repair', d:'Door dings in crowded Mira Mesa office and shopping center lots are a daily occurrence. PDR gets panels back to factory condition the same day.' },
+      { icon:'🎨', t:'Paint Repair', d:'Paint transfer and swirl damage from freeway commutes on I-15 and SR-56 corrected with precision color-match. No booth, no shop visit needed.' },
+      { icon:'💥', t:'Bumper Crack Repair', d:'Low-speed parking lot and drive-through incidents crack plastic bumper covers. We repair or replace on-site at your home or office in Mira Mesa.' }
+    ],
+    nearbyLinks: ['rancho-bernardo','poway','carlsbad','pacific-beach']
+  },
   { slug: 'carlsbad', name: 'Carlsbad', zip: '92008', lat: 33.1581, lng: -117.3506,
     region: 'North County Coastal', nearby: ['Oceanside', 'Vista', 'Encinitas'],
     chips: ['Carlsbad Village', 'La Costa', 'Aviara', 'Bressi Ranch', 'Carlsbad-by-the-Sea', 'Calavera Hills'],
@@ -203,14 +215,7 @@ const CITIES = [
   }
 ];
 
-// Mira Mesa data, used by the existing page – kept for nearbyLinks resolution only
-const MIRA_MESA = {
-  slug: 'mira-mesa', name: 'Mira Mesa'
-};
-
-const ALL_CITIES_BY_SLUG = Object.fromEntries(
-  [...CITIES, MIRA_MESA].map(c => [c.slug, c])
-);
+const ALL_CITIES_BY_SLUG = Object.fromEntries(CITIES.map(c => [c.slug, c]));
 
 const NAV_CITIES = [
   'carlsbad','chula-vista','coronado','downtown-san-diego','el-cajon','escondido',
@@ -433,6 +438,7 @@ body{background:var(--bg);color:#fff;font-family:'DM Sans',sans-serif;font-size:
 .topbar::before{left:0;background:linear-gradient(90deg,var(--red),transparent)}
 .topbar::after{right:0;background:linear-gradient(270deg,var(--red),transparent)}
 .topbar-track{display:flex;white-space:nowrap;animation:topbarScroll 32s linear infinite}
+.topbar-track:hover{animation-play-state:paused}
 .topbar-item{display:inline-flex;align-items:center;gap:10px;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;padding:0 28px;flex-shrink:0}
 .topbar-item a{color:#fff;text-decoration:none}
 .topbar-sep{display:inline-block;width:5px;height:5px;background:rgba(255,255,255,0.5);border-radius:50%;flex-shrink:0}
@@ -466,31 +472,34 @@ h2.section-h{font-family:'Anton',sans-serif;font-size:clamp(40px,5vw,72px);lette
 .breadcrumb{font-size:13px;color:var(--mid);margin-bottom:20px}
 .breadcrumb a{color:var(--mid);text-decoration:none}
 .breadcrumb a:hover{color:#fff}
-.page-hero h1{font-family:'Anton',sans-serif;font-size:clamp(44px,6vw,92px);line-height:0.9;letter-spacing:0.01em;color:#fff;margin-bottom:20px}
+.page-hero h1{font-family:'Anton',sans-serif;font-size:clamp(52px,6.5vw,100px);line-height:0.9;letter-spacing:0.01em;color:#fff;margin-bottom:20px}
 .page-hero-sub{font-size:17px;color:rgba(255,255,255,0.55);max-width:600px;line-height:1.75;margin-bottom:32px}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.svc-card{background:var(--bg2);padding:36px 28px;position:relative;overflow:hidden;transition:background 0.3s}
-.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--red);transition:width 0.4s}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.svc-card{background:var(--bg2);padding:44px 36px;position:relative;overflow:hidden;transition:background 0.3s}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--red);transition:width 0.4s ease}
 .svc-card:hover{background:var(--bg3)}
 .svc-card:hover::after{width:100%}
-.svc-icon{font-size:32px;margin-bottom:14px}
-.svc-title{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:0.02em;color:#fff;margin-bottom:8px;line-height:1.1}
-.svc-desc{font-size:13px;color:var(--mid);line-height:1.65;margin-bottom:14px}
-.svc-meta{display:flex;gap:8px;flex-wrap:wrap}
-.svc-badge{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--red);background:rgba(217,38,38,0.1);border:1px solid rgba(217,38,38,0.2);padding:4px 9px;border-radius:4px}
-.local-section{padding:80px 48px;background:var(--bg)}
-.local-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px;align-items:start}
-.neighborhood-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.chip{background:var(--bg3);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px;font-size:13px;color:rgba(255,255,255,0.65)}
-.chip.active{background:rgba(217,38,38,0.1);border-color:rgba(217,38,38,0.3);color:#fff}
-.map-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)}
-.map-wrap iframe{width:100%;height:380px;border:0;display:block}
-.why-section{padding:80px 48px;background:var(--bg2)}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
-.why-card{background:var(--bg3);border-radius:12px;padding:28px;border:1px solid rgba(255,255,255,0.07)}
-.why-icon{font-size:30px;margin-bottom:12px}
-.why-title{font-family:'Anton',sans-serif;font-size:19px;letter-spacing:0.02em;color:#fff;margin-bottom:8px}
-.why-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65}
+.svc-icon{font-size:36px;margin-bottom:20px}
+.svc-title{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:0.02em;color:#fff;margin-bottom:12px;line-height:1.1}
+.svc-desc{font-size:14px;color:var(--mid);line-height:1.75;margin-bottom:16px}
+.svc-meta{display:flex;gap:10px;flex-wrap:wrap}
+.svc-badge{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--red);background:rgba(217,38,38,0.1);border:1px solid rgba(217,38,38,0.2);padding:5px 10px;border-radius:4px}
+.svc-num{position:absolute;bottom:12px;right:20px;font-family:'Anton',sans-serif;font-size:72px;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none}
+.local-section{padding:88px 48px;background:var(--bg)}
+.local-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:48px}
+.local-intro{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:28px}
+.neighborhood-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.neighborhood-list li{font-size:15px;color:rgba(255,255,255,0.75);display:flex;gap:10px;align-items:center;line-height:1.5;padding:10px 16px;background:var(--bg2);border-radius:6px;border:1px solid rgba(255,255,255,0.06)}
+.neighborhood-list li::before{content:'📍';font-size:13px;flex-shrink:0}
+.map-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);height:420px}
+.map-wrap iframe{width:100%;height:100%;border:0;display:block}
+.why-section{padding:88px 48px;background:var(--bg2)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.why-block{background:var(--bg2);padding:44px 36px;transition:background 0.3s}
+.why-block:hover{background:var(--bg3)}
+.why-icon{font-size:40px;margin-bottom:20px}
+.why-title{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.02em;color:#fff;margin-bottom:14px;line-height:1.1}
+.why-desc{font-size:14px;color:var(--mid);line-height:1.8}
 .cta-section{padding:72px 48px;background:var(--red);text-align:center}
 .cta-h{font-family:'Anton',sans-serif;font-size:clamp(36px,5vw,64px);line-height:0.92;color:#fff;margin-bottom:16px}
 .cta-p{font-size:16px;color:rgba(255,255,255,0.85);max-width:500px;margin:0 auto 32px;line-height:1.7}
@@ -542,30 +551,35 @@ const sharedSvcGrid = `
       <div class="svc-title">Bumper Repair</div>
       <p class="svc-desc">Cracks, dents, scuffs, and impact damage with color-matched refinish.</p>
       <div class="svc-meta"><span class="svc-badge">$350&ndash;$600</span><span class="svc-badge">2&ndash;3 hrs</span></div>
+      <div class="svc-num">01</div>
     </div>
     <div class="svc-card">
       <div class="svc-icon">&#x2726;</div>
       <div class="svc-title">Scratch Removal</div>
       <p class="svc-desc">Surface to moderate scratch repair on doors, bumpers, and body panels.</p>
       <div class="svc-meta"><span class="svc-badge">$200&ndash;$450</span><span class="svc-badge">1.5&ndash;3 hrs</span></div>
+      <div class="svc-num">02</div>
     </div>
     <div class="svc-card">
       <div class="svc-icon">&#x1F6E1;&#xFE0F;</div>
       <div class="svc-title">Scuff &amp; Scrape Repair</div>
       <p class="svc-desc">Light scuffs and paint transfer from parking lot or curb contact.</p>
       <div class="svc-meta"><span class="svc-badge">$150&ndash;$300</span><span class="svc-badge">1&ndash;2 hrs</span></div>
+      <div class="svc-num">03</div>
     </div>
     <div class="svc-card">
       <div class="svc-icon">&#x1F3A8;</div>
       <div class="svc-title">Auto Body Paint</div>
       <p class="svc-desc">Full panel repaint with factory color match and clear coat blend.</p>
       <div class="svc-meta"><span class="svc-badge">$400&ndash;$750</span><span class="svc-badge">3&ndash;5 hrs</span></div>
+      <div class="svc-num">04</div>
     </div>
     <div class="svc-card">
       <div class="svc-icon">&#x2699;&#xFE0F;</div>
       <div class="svc-title">Paintless Dent Repair</div>
       <p class="svc-desc">Dent removal on eligible panels &mdash; no repainting required.</p>
       <div class="svc-meta"><span class="svc-badge">$200&ndash;$500</span><span class="svc-badge">1.5&ndash;3 hrs</span></div>
+      <div class="svc-num">05</div>
     </div>
     <div class="svc-card" style="background:rgba(217,38,38,0.05);border:1px dashed rgba(217,38,38,0.3);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;">
       <div class="svc-title" style="font-size:22px;">Not Sure?</div>
@@ -579,17 +593,17 @@ const whySection = `
   <p class="section-tag">Why Mobile</p>
   <h2 class="section-h">WHY MOBILE REPAIR.</h2>
   <div class="why-grid">
-    <div class="why-card">
+    <div class="why-block">
       <div class="why-icon">&#x1F3E0;</div>
       <div class="why-title">No Drop-Off Required</div>
       <p class="why-desc">We come to your home or office. Your car stays where it is throughout the repair.</p>
     </div>
-    <div class="why-card">
+    <div class="why-block">
       <div class="why-icon">&#x26A1;</div>
       <div class="why-title">Same-Day When Available</div>
       <p class="why-desc">Same-day availability is possible depending on schedule and repair type. Text a photo first to check.</p>
     </div>
-    <div class="why-card">
+    <div class="why-block">
       <div class="why-icon">&#x1F4F7;</div>
       <div class="why-title">Photo-First Quoting</div>
       <p class="why-desc">Send a photo and your vehicle info. We review the damage and respond with a price range &mdash; no in-person visit needed.</p>
@@ -627,7 +641,6 @@ const howItWorksSection = (locationLabel = 'location') => `
 
 // ---- CITY PAGE ----
 function cityPage(c) {
-  const tagline = `Mobile Auto Paint Repair &nbsp;${c.region}`;
   const title = `Auto Paint Repair ${c.name} (Mobile) – Same Day Service | Auto Paint Fix`;
   const desc = `Need auto paint repair in ${c.name}? We come to your home, apartment, or office — no shop drop-off. Color-matched, same-day service. Text a photo for a fast quote. ${PHONE}.`;
   const url = `${DOMAIN}/${c.slug}.html`;
@@ -638,13 +651,13 @@ function cityPage(c) {
     { q: `Do you serve all of ${c.name}?`, a: `Yes. We cover all of ${c.name} including ZIP code ${c.zip} and surrounding ${c.region} neighborhoods.` }
   ];
   const ldRepair = {
-    "@context":"https://schema.org","@type":"AutoRepair","name":"Auto Paint Fix",
-    "description":`Mobile auto paint and cosmetic auto body repair in ${c.name}, CA.`,
-    "telephone":TEL,"url":url,
-    "areaServed":{"@type":"City","name":`${c.name}, San Diego`,"addressRegion":"CA"},
+    "@context":"https://schema.org","@type":["LocalBusiness","AutoRepair"],"name":"Auto Paint Fix",
+    "description":`Mobile auto paint and cosmetic auto body repair in ${c.name}, CA. We come to your home, office, or apartment — no shop drop-off needed.`,
+    "telephone":TEL,"url":url,"priceRange":"$$",
     "address":{"@type":"PostalAddress","addressLocality":c.name,"addressRegion":"CA","addressCountry":"US"},
     "geo":{"@type":"GeoCoordinates","latitude":c.lat,"longitude":c.lng},
-    "priceRange":"$$","openingHours":["Mo-Fr 07:00-19:00","Sa-Su 08:00-17:00"],"serviceType":"Mobile Auto Paint Repair",
+    "areaServed":{"@type":"City","name":c.name},
+    "openingHours":["Mo-Fr 07:00-19:00","Sa-Su 08:00-17:00"],"serviceType":"Mobile Auto Paint Repair",
     "hasOfferCatalog":{"@type":"OfferCatalog","name":"Mobile Auto Body Services","itemListElement":[
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bumper Repair"}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Scratch Removal"}},
@@ -660,7 +673,7 @@ function cityPage(c) {
     .filter(s => ALL_CITIES_BY_SLUG[s])
     .map(s => `<a href="${s}.html" style="color:var(--red);">${ALL_CITIES_BY_SLUG[s].name}</a>`)
     .join(', ');
-  const chipsHTML = [c.name, ...c.chips].map((n,i) => `<span class="chip${i===0?' active':''}">${n}</span>`).join('\n        ');
+  const neighborhoodListHTML = [c.name, ...c.chips].map(n => `<li>${n}</li>`).join('\n        ');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -719,7 +732,7 @@ ${c.drivers.map(d => `    <div style="background:var(--bg2);padding:36px 28px;" 
 </section>
 
 <!-- SERVICES SECTION -->
-<section style="padding:80px 48px;background:var(--bg2);" class="reveal">
+<section style="padding:88px 48px;background:var(--bg2);" class="reveal">
   <p class="section-tag">What We Fix</p>
   <h2 class="section-h">SERVICES.</h2>
   <p style="font-size:15px;color:var(--mid);max-width:540px;margin-bottom:40px;">All repairs are performed on-site at your location in ${c.name}. No towing, no rental car, no waiting room.</p>
@@ -735,10 +748,10 @@ ${c.drivers.map(d => `    <div style="background:var(--bg2);padding:36px 28px;" 
       <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:20px;">We serve ${c.name}, ${c.nearby.join(', ')}, and surrounding ${c.region} communities. Most jobs happen at home driveways or office parking lots.</p>
       <p class="local-intro reveal" style="margin-top:0;">If you searched for <strong>auto paint repair near me in ${c.name}</strong> — this is exactly what we do. Whether your bumper was clipped in an apartment garage, hit in traffic, or scraped in a crowded shopping center lot, we come directly to your car.</p>
       ${nearbyLinksHTML ? `<p class="local-intro reveal">Also serving nearby areas: ${nearbyLinksHTML}.</p>` : ''}
-      <p style="font-size:13px;color:var(--mid);margin-bottom:8px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Areas We Cover</p>
-      <div class="neighborhood-chips">
-        ${chipsHTML}
-      </div>
+      <p style="font-size:13px;color:var(--mid);margin-bottom:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Areas We Cover</p>
+      <ul class="neighborhood-list">
+        ${neighborhoodListHTML}
+      </ul>
       <div style="margin-top:28px;">
         <a href="contact.html" class="btn-primary">Book in ${c.name}</a>
       </div>
@@ -847,7 +860,7 @@ ${s.cards.map(card => `    <div style="background:var(--bg2);padding:36px 28px;"
 </section>
 
 <!-- OTHER SERVICES -->
-<section style="padding:80px 48px;background:var(--bg2);" class="reveal">
+<section style="padding:88px 48px;background:var(--bg2);" class="reveal">
   <p class="section-tag">More Services</p>
   <h2 class="section-h">OTHER WORK WE DO.</h2>
   <p style="font-size:15px;color:var(--mid);max-width:540px;margin-bottom:40px;">All repairs are performed on-site across San Diego County. No towing, no rental car, no waiting room.</p>
