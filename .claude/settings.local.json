@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(gh repo *)",
+      "PowerShell(gh repo list belovedlighthouseofseas --limit 50)",
+      "PowerShell(Invoke-RestMethod -Uri \"https://api.github.com/users/belovedlighthouseofseas/repos?per_page=100\")",
+      "PowerShell(Invoke-RestMethod -Uri \"https://api.github.com/search/repositories?q=autopaintfix\")",
+      "PowerShell(git clone https://github.com/belovedlighthouseofseas/AutoPaintSDtestnet1.git C:\\\\Users\\\\young\\\\autopaintfix)",
+      "PowerShell(if \\(Test-Path \"C:\\\\Users\\\\young\\\\autopaintfix\\\\.git\"\\) { \"OK: clone exists\"; \"Files: $\\(\\(Get-ChildItem 'C:\\\\Users\\\\young\\\\autopaintfix' -Force | Measure-Object\\).Count\\)\"; Set-Location \"C:\\\\Users\\\\young\\\\autopaintfix\"; git log --oneline -3; git remote -v } else { \"FAILED: clone directory or .git missing\" })"
+    ]
+  }
+}
